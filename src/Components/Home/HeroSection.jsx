@@ -15,7 +15,7 @@ const HeroSection = () => {
         playsInline
         poster="/images/hero-poster.png"
       >
-        <source src="/Video/project.mp4" type="video/mp4" />
+        <source src="https://res.cloudinary.com/ddhxxqkpc/video/upload/v1775653906/project_u5xzzu.mp4" type="video/mp4" />
       </video>
 
        <div className="absolute inset-0 bg-black/50" />
