@@ -94,7 +94,7 @@ const Navbar = () => {
             >
               {mobileMenuOpen ? <X size={22} /> : <Menu size={22} />}
             </button>
-            <img src="Images/logo.webp" className="w-48 md:mt-0 mt-1.5 md:w-50" alt="" />
+            <img src="Images/logo.webp" className="w-40 md:mt-0 mt-1.5 md:w-50" alt="" />
           </div>
 
           {/* Desktop Center links */}
