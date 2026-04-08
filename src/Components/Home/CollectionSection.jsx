@@ -1,10 +1,4 @@
-const collections = [
-  { name: "Speakers", image: "/Images/NavDropimage.webp" },
-  { name: "Amplifiers", image: "/Images/NavDropimage.webp" },
-  { name: "DSPs", image: "/Images/NavDropimage.webp" },
-  { name: "Subwoofers", image: "/Images/NavDropimage.webp" },
-  { name: "Wiring", image: "/Images/NavDropimage.webp" },
-];
+import Image from "next/image";
 
 const Collections = () => {
   return (
@@ -29,7 +23,10 @@ const Collections = () => {
               { title: "Accessories", img: "/Images/Image5.jpg" },
             ].map((item, i) => (
               <div key={i} className="flex flex-col w-[280px]">
-                <img
+                <Image
+                fill 
+                priority
+                sizes=""
                   src={item.img}
                   alt={item.title}
                   className="w-full h-[250px] object-cover"
