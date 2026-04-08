@@ -20,7 +20,7 @@ const ProjectSection = () => {
           loop
           playsInline
         >
-          <source src="/video/Video.mp4" type="video/mp4" />
+          <source src="https://res.cloudinary.com/ddhxxqkpc/video/upload/v1775653107/Video_ijeu57.mp4" type="video/mp4" />
         </video>
       </div>  
 </div>
