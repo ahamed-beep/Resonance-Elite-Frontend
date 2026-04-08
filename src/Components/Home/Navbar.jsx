@@ -25,18 +25,7 @@ const navLinks = [
       ],
     },
   },
-  {
-    label: "Technology",
-    href: "#",
-    dropdown: {
-      shopAll: "SHOP ALL TECHNOLOGY",
-      columns: [
-        ["BLUETOOTH", "ANDROID AUTO", "APPLE CARPLAY", "DSP"],
-        ["NOISE CANCELLATION", "AMPLIFICATION"],
-      ],
-    },
-  },
-  {
+   {
     label: "Services",
     href: "#",
     dropdown: {
@@ -47,6 +36,18 @@ const navLinks = [
       ],
     },
   },
+  {
+    label: "Projects",
+    href: "#",
+    dropdown: {
+      shopAll: "SHOP ALL PROJECTS",
+      columns: [
+        ["BLUETOOTH", "ANDROID AUTO", "APPLE CARPLAY", "DSP"],
+        ["NOISE CANCELLATION", "AMPLIFICATION"],
+      ],
+    },
+  },
+ 
   {
     label: "About",
     href: "#",
@@ -70,6 +71,9 @@ const navLinks = [
     },
   },
 ];
+
+const DROPDOWN_LINKS = ["Brands", "Products"];
+
 const Navbar = () => {
   const [openDropdown, setOpenDropdown] = useState(null);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
@@ -83,16 +87,15 @@ const Navbar = () => {
       >
         <div className="px-4 md:px-15 flex items-center justify-between py-5">
           {/* Logo */}
-<div className="flex" >
-
-               <button
+          <div className="flex">
+            <button
               className="md:hidden mr-3 text-black hover:opacity-70 transition-opacity"
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-              >
+            >
               {mobileMenuOpen ? <X size={22} /> : <Menu size={22} />}
             </button>
-          <img src="Images/logo.webp" className="w-42 md:mt-0 mt-1.5 md:w-50" alt="" />
-                </div>
+            <img src="Images/logo.webp" className="w-48 md:mt-0 mt-1.5 md:w-50" alt="" />
+          </div>
 
           {/* Desktop Center links */}
           <ul className="hidden font-jakarta md:flex items-center gap-8">
@@ -101,14 +104,14 @@ const Navbar = () => {
                 key={link.label}
                 className="relative"
                 onMouseEnter={() =>
-                  link.dropdown
+                  DROPDOWN_LINKS.includes(link.label)
                     ? setOpenDropdown(link.label)
                     : setOpenDropdown(null)
                 }
               >
                 <a
                   href={link.href}
-                  className="text-[#000000B2] text-sm tracking-wide transition-colors hover:text-black"
+                  className="text-[#000000B2] font-bold text-sm tracking-wide transition-colors hover:text-black"
                 >
                   {link.label}
                 </a>
@@ -118,27 +121,19 @@ const Navbar = () => {
 
           {/* Right icons */}
           <div className="flex items-center gap-3 md:gap-5">
-            {/* User icon */}
             <button className="text-black hover:opacity-70 transition-opacity">
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" className="size-5 md:size-6">
                 <path fillRule="evenodd" d="M7.5 6a4.5 4.5 0 1 1 9 0 4.5 4.5 0 0 1-9 0ZM3.751 20.105a8.25 8.25 0 0 1 16.498 0 .75.75 0 0 1-.437.695A18.683 18.683 0 0 1 12 22.5c-2.786 0-5.433-.608-7.812-1.7a.75.75 0 0 1-.437-.695Z" clipRule="evenodd" />
               </svg>
             </button>
-
-            {/* Bag icon */}
             <button className="text-black hover:opacity-70 transition-opacity">
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" className="size-5 md:size-6">
                 <path fillRule="evenodd" d="M7.5 6v.75H5.513c-.96 0-1.764.724-1.865 1.679l-1.263 12A1.875 1.875 0 0 0 4.25 22.5h15.5a1.875 1.875 0 0 0 1.865-2.071l-1.263-12a1.875 1.875 0 0 0-1.865-1.679H16.5V6a4.5 4.5 0 1 0-9 0ZM12 3a3 3 0 0 0-3 3v.75h6V6a3 3 0 0 0-3-3Zm-3 8.25a3 3 0 1 0 6 0v-.75a.75.75 0 0 1 1.5 0v.75a4.5 4.5 0 1 1-9 0v-.75a.75.75 0 0 1 1.5 0v.75Z" clipRule="evenodd" />
               </svg>
             </button>
-
-            {/* Search icon */}
             <button className="text-black hover:opacity-70 transition-opacity">
               <Search size={20} strokeWidth={2.5} />
             </button>
-
-            {/* Hamburger — mobile only */}
-       
           </div>
         </div>
 
@@ -151,37 +146,34 @@ const Navbar = () => {
           >
             <div className="mx-auto flex">
               <div className="flex-1 px-16 py-8">
-               <a 
+                <a
                   href="#"
                   className="text-xs font-jakarta text-[#000000] font-semibold tracking-widest mb-6 inline-flex items-center gap-0.5"
                 >
                   SHOP ALL {openDropdown.toUpperCase()}{" "}
                   <span className="font-light mb-2 text-3xl">»</span>
                 </a>
-
                 <h3 className="text-lg font-jakarta tracking-wider mb-4">
                   {openDropdown.toUpperCase()}
                 </h3>
-
                 <div className="flex font-jakarta gap-38">
-  {navLinks
-    .find((l) => l.label === openDropdown)
-    ?.dropdown?.columns.map((col, ci) => (
-      <div key={ci} className="flex flex-col gap-3">
-        {col.map((item) => (
-          <a
-            key={item}
-            href="#"
-            className="text-sm tracking-wide text-gray-600 hover:text-black transition-colors"
-          >
-            {item}
-          </a>
-        ))}
-      </div>
-    ))}
-</div>
+                  {navLinks
+                    .find((l) => l.label === openDropdown)
+                    ?.dropdown?.columns.map((col, ci) => (
+                      <div key={ci} className="flex flex-col gap-3">
+                        {col.map((item) => (
+                         <a 
+                            key={item}
+                            href="#"
+                            className="text-sm tracking-wide text-gray-600 hover:text-black transition-colors"
+                          >
+                            {item}
+                          </a>
+                        ))}
+                      </div>
+                    ))}
+                </div>
               </div>
-
               <div className="w-[45%] flex-shrink-0">
                 <img
                   src="/Images/NavDropimage.webp"
@@ -199,38 +191,39 @@ const Navbar = () => {
             {navLinks.map((link) => (
               <div key={link.label} className="border-b border-gray-100 last:border-0">
                 <button
-                  className="w-full flex items-center justify-between py-3 text-sm font-jakarta text-[#000000B2] hover:text-black transition-colors"
+                  className="w-full flex font-bold items-center justify-between py-3 text-sm font-jakarta text-[#000000B2] hover:text-black transition-colors"
                   onClick={() =>
-                    setMobileDropdown(
-                      mobileDropdown === link.label ? null : link.label
-                    )
+                    DROPDOWN_LINKS.includes(link.label)
+                      ? setMobileDropdown(
+                          mobileDropdown === link.label ? null : link.label
+                        )
+                      : null
                   }
                 >
                   {link.label}
-                  {link.dropdown && (
+                  {DROPDOWN_LINKS.includes(link.label) && (
                     <span className="text-lg">
                       {mobileDropdown === link.label ? "−" : "+"}
                     </span>
                   )}
                 </button>
 
-                {/* Mobile sub links — sirf Products ke liye */}
-              {mobileDropdown === link.label && (
-  <div className="pb-3 pl-3 flex flex-col gap-2">
-    {navLinks
-      .find((l) => l.label === link.label)
-      ?.dropdown?.columns.flat()
-      .map((item) => (
-        <a
-          key={item}
-          href="#"
-          className="text-xs tracking-wide text-gray-500 hover:text-black transition-colors"
-        >
-          {item}
-        </a>
-      ))}
-  </div>
-)}
+                {mobileDropdown === link.label && (
+                  <div className="pb-3 pl-3 flex flex-col gap-2">
+                    {navLinks
+                      .find((l) => l.label === link.label)
+                      ?.dropdown?.columns.flat()
+                      .map((item) => (
+                        <a
+                          key={item}
+                          href="#"
+                          className="text-xs tracking-wide text-gray-500 hover:text-black transition-colors"
+                        >
+                          {item}
+                        </a>
+                      ))}
+                  </div>
+                )}
               </div>
             ))}
           </div>
