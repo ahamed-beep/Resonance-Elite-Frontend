@@ -16,11 +16,11 @@ const Collections = () => {
         <div className="md:hidden overflow-x-auto overflow-y-hidden scroll-smooth pb-4 -mx-3 px-3">
           <div className="flex gap-4 min-w-max">
             {[
-              { title: "Amplifiers", img: "/Images/Image1.jpg" },
-              { title: "Subwoofers", img: "/Images/Image2.jpg" },
-              { title: "Speakers", img: "/Images/Image3.jpg" },
-              { title: "DSPs", img: "/Images/Image4.jpg" },
-              { title: "Accessories", img: "/Images/Image5.jpg" },
+              { title: "Amplifiers", img: "/Images/image1.jpg" },
+              { title: "Subwoofers", img: "/Images/image2.jpg" },
+              { title: "Speakers", img: "/Images/image3.jpg" },
+              { title: "DSPs", img: "/Images/image4.jpg" },
+              { title: "Accessories", img: "/Images/image5.jpg" },
             ].map((item, i) => (
               <div key={i} className="flex flex-col w-[280px]">
                 <Image
