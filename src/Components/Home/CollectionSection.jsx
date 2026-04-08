@@ -1,10 +1,4 @@
-const collections = [
-  { name: "Speakers", image: "/Images/NavDropimage.webp" },
-  { name: "Amplifiers", image: "/Images/NavDropimage.webp" },
-  { name: "DSPs", image: "/Images/NavDropimage.webp" },
-  { name: "Subwoofers", image: "/Images/NavDropimage.webp" },
-  { name: "Wiring", image: "/Images/NavDropimage.webp" },
-];
+import Image from "next/image";
 
 const Collections = () => {
   return (
@@ -22,14 +16,17 @@ const Collections = () => {
         <div className="md:hidden overflow-x-auto overflow-y-hidden scroll-smooth pb-4 -mx-3 px-3">
           <div className="flex gap-4 min-w-max">
             {[
-              { title: "Amplifiers", img: "/Images/Image1.jpg" },
-              { title: "Subwoofers", img: "/Images/Image2.jpg" },
-              { title: "Speakers", img: "/Images/Image3.jpg" },
-              { title: "DSPs", img: "/Images/Image4.jpg" },
-              { title: "Accessories", img: "/Images/Image5.jpg" },
+              { title: "Amplifiers", img: "/Images/image1.jpg" },
+              { title: "Subwoofers", img: "/Images/image2.jpg" },
+              { title: "Speakers", img: "/Images/image3.jpg" },
+              { title: "DSPs", img: "/Images/image4.jpg" },
+              { title: "Accessories", img: "/Images/image5.jpg" },
             ].map((item, i) => (
               <div key={i} className="flex flex-col w-[280px]">
-                <img
+                <Image
+                fill 
+                priority
+                sizes=""
                   src={item.img}
                   alt={item.title}
                   className="w-full h-[250px] object-cover"
