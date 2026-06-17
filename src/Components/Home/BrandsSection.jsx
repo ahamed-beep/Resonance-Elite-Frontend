@@ -1,54 +1,51 @@
-const BrandsSection = () => {
-  const logos = [
-    "/Images/steg.webp",
-    "/Images/brax.png",
-    "/Images/DDAudio.svg",
-    "/Images/gladen.png",
-    "/Images/match.png",
-  ];
+import Image from "next/image";
 
+const brandLogos = [
+  { src: "/Images/home/brand/morel.svg", alt: "Morel Audio" },
+  { src: "/Images/home/brand/brax.svg", alt: "Brax Audio" },
+  { src: "/Images/home/brand/DDAudio.svg", alt: "DD Audio" },
+  { src: "/Images/home/brand/gladen.svg", alt: "Gladen Audio" },
+  { src: "/Images/home/brand/match.svg", alt: "Match Audio" },
+];
+
+const doubledLogos = [...brandLogos, ...brandLogos, ...brandLogos];
+
+export default function BrandsSection() {
   return (
-    <section className="bg-white">
-      <div className="py-20 px-6 md:px-10 text-center">
-        <h2 className="text-2xl md:text-4xl text-[#000000]  font-jakarta font-bold text-gray-900 max-w-3xl mx-auto">
-          Home to World's Leading Elite Audio Brands
-        </h2>
-        <p className="text-gray-600 font-jakarta mt-4 text-sm md:text-base max-w-3xl mx-auto leading-relaxed font-light">
-          We offer a handpicked selection of globally renowned car audio brands,
-          featuring competition-grade systems engineered to achieve true
-          studio-quality sound inside your car.
-        </p>
+    <section aria-label="Featured audio brands" className="py-12 md:py-20 px-4 bg-white text-center overflow-hidden">
+      <div className=" mx-auto">
 
-        {/* Marquee */}
-        <div className="w-full overflow-hidden mt-16">
-          <div
-            className="flex gap-20 items-center"
-            style={{
-              width: "max-content",
-              animation: "scrollLeft 15s linear infinite",
-            }}
-          >
-            {[...logos, ...logos, ...logos].map((logo, i) => (
-              <img
-                key={i}
-                src={logo}
-                alt={`Brand ${i + 1}`}
-                className="h-12 w-auto object-contain opacity-80 hover:opacity-100 transition duration-300"
-              />
+        <div className="mb-8 md:mb-12">
+          <h2 className="text-xl sm:text-2xl md:text-4xl font-light text-zinc-900 tracking-tight leading-snug">
+            Home to World's Leading Elite Audio Brands
+          </h2>
+          <p className="text-zinc-500 mt-4 text-xs sm:text-sm md:text-base max-w-2xl mx-auto leading-relaxed font-light px-2">
+            We offer a handpicked selection of globally renowned car audio brands, featuring competition-grade systems engineered to achieve true studio-quality sound inside your car.
+          </p>
+        </div>
+
+        <div className="w-full overflow-hidden mt-8 md:mt-14 py-2 relative">
+
+          <div className="absolute inset-y-0 left-0 w-8 md:w-16 bg-gradient-to-r from-white to-transparent z-10 pointer-events-none" />
+          <div className="absolute inset-y-0 right-0 w-8 md:w-16 bg-gradient-to-l from-white to-transparent z-10 pointer-events-none" />
+
+          <div className="flex gap-10 md:gap-16 w-max animate-marquee items-center">
+            {doubledLogos.map((logo, i) => (
+              <div key={i} className="w-28 sm:w-36 md:w-48 flex justify-center items-center shrink-0">
+                <Image
+                  src={logo.src}
+                  alt={logo.alt}
+                  width={192}
+                  height={64}
+                  className="h-8 sm:h-12 md:h-16 w-full object-contain"
+                />
+              </div>
             ))}
           </div>
-        </div>
-      </div>
 
-      {/* CSS Animation */}
-      <style>{`
-        @keyframes scrollLeft {
-          0%   { transform: translateX(0); }
-          100% { transform: translateX(-33.33%); }
-        }
-      `}</style>
+        </div>
+
+      </div>
     </section>
   );
-};
-
-export default BrandsSection;
+}

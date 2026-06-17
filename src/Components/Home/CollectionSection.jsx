@@ -1,75 +1,55 @@
 import Image from "next/image";
+import Link from "next/link";
 
-const Collections = () => {
+const collections = [
+  { title: "Amplifiers", img: "/Images/home/collections/AMPLIFIERS.webp" },
+  { title: "Subwoofers", img: "/Images/home/collections/SUBWOOFERS.webp" },
+  { title: "Speakers", img: "/Images/home/collections/SPEAKERS.webp" },
+  { title: "DSPs", img: "/Images/home/collections/DSP'S.webp" },
+  { title: "Accessories", img: "/Images/home/collections/ACCESSORIES.webp" },
+];
+
+export default function CollectionsSection() {
   return (
-    <div className="bg-white text-center pb-10 md:py-16 px-3">
-      <h2 className="text-2xl md:text-4xl font-bold text-gray-900">
-        Discover Our Collections
-      </h2>
-      <p className="text-gray-600 mt-4 text-sm md:text-base max-w-2xl mx-auto leading-relaxed font-light">
-        High-end audio equipment built with the highest quality, designed with the goal to provide uncompromising sound to every drive.
-      </p>
+    <section className="bg-white text-center py-12 md:py-16 px-10  overflow-hidden" aria-label="Product collections">
+      <div className=" mx-auto">
 
-      {/* Mobile horizontal scroll container */}
-      <div className="relative mt-12">
-        {/* Mobile view - horizontal scroll */}
-        <div className="md:hidden overflow-x-auto overflow-y-hidden scroll-smooth pb-4 -mx-3 px-3">
-          <div className="flex gap-4 min-w-max">
-            {[
-              { title: "Amplifiers", img: "/Images/image1.jpg" },
-              { title: "Subwoofers", img: "/Images/image2.jpg" },
-              { title: "Speakers", img: "/Images/image3.jpg" },
-              { title: "DSPs", img: "/Images/image4.jpg" },
-              { title: "Accessories", img: "/Images/image5.jpg" },
-            ].map((item, i) => (
-              <div key={i} className="flex flex-col w-[280px]">
+        <div className="mb-10 md:mb-12">
+          <h2 className="text-xl sm:text-2xl md:text-4xl font-light text-zinc-900 tracking-tight">
+            Discover Our Collections
+          </h2>
+          <p className="text-zinc-500 mt-3 text-xs sm:text-sm md:text-base max-w-2xl mx-auto leading-relaxed font-light px-2">
+            High-end audio equipment built with the highest quality, designed with the goal to provide uncompromising sound to every drive.
+          </p>
+        </div>
+
+        <div className="grid grid-cols-2 md:grid-cols-5 gap-4 sm:gap-6">
+          {collections.map((item, i) => (
+            <Link
+              key={i}
+              href={`/products?group=Car+Audio&category=${encodeURIComponent(item.title)}`}
+              className={`flex flex-col cursor-pointer ${i === 4 ? "col-span-2 md:col-span-1 max-w-[50%] mx-auto w-full md:max-w-none" : ""}`}
+            >
+              <div className="w-full h-[180px] sm:h-[240px] md:h-[320px] bg-white overflow-hidden flex items-center justify-center p-2">
                 <Image
-                fill 
-                priority
-                sizes=""
                   src={item.img}
                   alt={item.title}
-                  className="w-full h-[250px] object-cover"
+                  width={300}
+                  height={320}
+                  className="w-full h-full object-contain"
                 />
-                <div className="mt-4 text-center">
-                  <button className="px-4 py-2 bg-white text-black text-xs font-semibold uppercase tracking-widest border border-black hover:bg-black hover:text-white transition duration-300">
-                    {item.title}
-                  </button>
-                </div>
               </div>
-            ))}
-          </div>
-        </div>
 
-        {/* Desktop view - grid layout */}
-        <div className="hidden md:grid md:grid-cols-5 gap-4">
-          {[
-            { title: "Amplifiers", img: "/Images/Image1.jpg" },
-            { title: "Subwoofers", img: "/Images/Image2.jpg" },
-            { title: "Speakers", img: "/Images/Image3.jpg" },
-            { title: "DSPs", img: "/Images/Image4.jpg" },
-            { title: "Accessories", img: "/Images/Image5.jpg" },
-          ].map((item, i) => (
-            <div key={i} className="flex flex-col">
-              <img
-                src={item.img}
-                alt={item.title}
-                className="w-full h-[250px] md:h-[320px] object-cover"
-              />
-              <div className="mt-4 text-center">
-                <button className="px-4 py-2 bg-white text-black text-xs font-semibold uppercase tracking-widest border border-black hover:bg-black hover:text-white transition duration-300">
+              <div className="mt-3 text-center w-full">
+                <span className="block w-full px-3 py-2 md:py-2.5 bg-white text-black text-[10px] sm:text-xs font-medium uppercase tracking-widest border border-black hover:bg-black hover:text-white transition-colors duration-300">
                   {item.title}
-                </button>
+                </span>
               </div>
-            </div>
+            </Link>
           ))}
         </div>
+
       </div>
-
-      {/* Optional: Scroll indicator for mobile */}
-    
-    </div>
+    </section>
   );
-};
-
-export default Collections;
+}
