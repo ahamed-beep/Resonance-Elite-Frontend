@@ -11,9 +11,9 @@ const ProjectCategories = () => {
       <div className="mt-12 overflow-x-auto md:overflow-visible">
         <div className="flex md:grid md:grid-cols-3 gap-10 max-w-6xl mx-auto min-w-max md:min-w-0">
           {[
-            { title: "SQ Projects", img: "/Images/project1.jpg" },
-            { title: "SQL Projects", img: "/Images/project2.jpg" },
-            { title: "SPL Projects", img: "/Images/project3.jpg" },
+         { title: "SQ Projects", img: "/Images/home/project/project1.webp" },
+    { title: "SQL Projects", img: "/Images/home/project/project2.webp" },
+    { title: "SPL Projects", img: "/Images/home/project/project3.webp" },
           ].map((card, i) => (
             <div key={i} className="group w-[280px] md:w-auto">
               <div className="overflow-hidden">

@@ -1,89 +1,80 @@
-import React from 'react'
+import Image from "next/image";
 
-const ServicesSection = () => {
+const services = [
+  {
+    title: "Tuning",
+    subtitle: "Competition-Grade DSP Calibration",
+    description:
+      "We deliver studio-grade digital signal processing using advanced binaural microphones calibrated to human hearing. By analysis of real-time cabin reflections through 3D Vectoring Graphs, we masterfully correct phase variations, time alignment, and frequencies to unlock uncompromised acoustic fidelity.",
+    img: "/Images/home/services/TUNING1.webp",
+    reverse: false,
+  },
+  {
+    title: "A-Pillars",
+    subtitle: "Hand-Crafted Acoustic Architecture",
+    description:
+      "Custom-tailored and laser-aligned using competition-proven axis theory. Each pillar is sculpted to eliminate cabin reflections, ensuring perfect driver orientation while maintaining structural integrity and a bespoke luxury aesthetic.",
+    img: "/Images/home/services/A-PILLARS.webp",
+    reverse: true,
+  },
+  {
+    title: "Amp Rack",
+    subtitle: "CAD-Engineered Integration",
+    description:
+      "Meticulously CAD-designed for flawless fitment and structural efficiency. Our high-end amplifier racks optimize thermal airflow, isolate hardware vibrations, and manage complex wiring for maximum system longevity, presenting a pristine, showcase-ready finish.",
+    img: "/Images/home/services/AMPRACKS.webp",
+    reverse: false,
+  },
+  {
+    title: "Custom Enclosures",
+    subtitle: "Premium Material Craftsmanship",
+    description:
+      "Precision-molded using aerospace fiberglass, carbon fiber, and multi-layered HDF to perfectly contour your vehicle's lines. Every enclosure is acoustically calculated for depth, transient speed, and raw control, delivering powerful bass without losing space.",
+    img: "/Images/home/services/CUSTOMENCLOSURES.webp",
+    reverse: true,
+  },
+];
+
+export default function ServicesSection() {
   return (
-    <div className="bg-white   md:pt-16 ">
-        <h2 className="text-2xl font-jakarta md:text-4xl text-center font-bold text-[#000000]">
+    <section
+      aria-label="Our services"
+      className="bg-white py-12 md:py-16 space-y-16 md:space-y-24 overflow-x-hidden"
+    >
+      <div className="max-w-4xl mx-auto text-center px-4">
+        <h2 className="text-xl sm:text-2xl md:text-4xl font-light text-zinc-900 tracking-tight">
           From Structure to Sound Perfection in Every Detail
         </h2>
-
-        {/* 1. TUNING — Image Left */}
-        <div className="flex flex-col mt-14 md:flex-row items-start justify-start">
-          <div className="w-full md:w-1/2 h-[250px] md:h-[450px]">
-            <img src="/Images/service1.jpg" alt="Tuning" loading="lazy" className="w-full h-full object-cover" />
-          </div>
-          <div className="w-full md:w-1/2 flex flex-col justify-start text-start px-6 md:px-12 pt-6 md:pt-12">
-          <div className='flex' >
-
-            <h2 className="text-lg px-5 text-[#000000] py-1 font-jakarta  border-[#000000] border font-bold  ">Tuning</h2>
-          </div>
-            <h4 className="mt-4 text-[#000000] font-jakarta text-lg md:text-xl  font-light ">
-              Competition-Grade DSP Tuning
-            </h4>
-            <p className=" mt-3 md:mt-6 mb-5 md:mb-0 text-gray-800 font-jakarta leading-relaxed  text-md  max-w-lg  font-light">
-              We use competition-level, studio-grade DSP tuning in cars, featuring binaural microphones calibrated to real human hearing. For precise cabin acoustics, we measure real-time reflections via 3D Room Vectoring Graphs, and apply advanced filters, EQs, time alignment, and phase alignment to correct the frequency and phase response of the system—delivering the absolute uncompromised sound.
-            </p>
-          </div>
-        </div>
-
-        {/* 2. A-PILLARS — Image Right */}
-        <div className="flex flex-col md:flex-row-reverse items-stretch">
-          <div className="w-full md:w-1/2 h-[250px] md:h-[450px]">
-            <img src="/Images/service2.jpg" alt="A-Pillars" loading="lazy" className="w-full h-full object-cover" />
-          </div>
-          <div className="w-full md:w-1/2 flex flex-col justify-start text-start px-6 md:px-12 pt-6 md:pt-12">
-          <div className='flex' >
-
-            <h2 className="text-lg px-5 text-[#000000] font-bold py-1 font-jakarta  border-[#000000] border ">A-Pillars</h2>
-          </div>
-            <h4 className="mt-4 text-[#000000] font-jakarta text-lg md:text-xl  font-light">
-              Hand-Crafted Precision Design
-            </h4>
-            <p className=" mt-3 md:mt-6 mb-5 md:mb-0 text-gray-800 font-jakarta leading-relaxed  text-md  max-w-lg  font-light">
-              Each set is custom-tailored and laser-aligned using competition-proven angle & axis theory, minimizing reflections and ensuring perfect orientation within the cabin. The result is optimal structural integrity, refined aesthetics, and superior acoustic performance.
-            </p>
-          </div>
-        </div>
-
-        {/* 3. AMP RACK — Image Left */}
-        <div className="flex flex-col md:flex-row items-start justify-start">
-          <div className="w-full md:w-1/2 h-[250px] md:h-[450px]">
-            <img src="/Images/service3.jpg" alt="Amp Rack" loading="lazy" className="w-full h-full object-cover" />
-          </div>
-          <div className="w-full md:w-1/2 flex flex-col justify-start text-start px-6 md:px-12 pt-6 md:pt-12">
-          <div className='flex' >
-
-            <h2 className="text-lg px-5 text-[#000000] py-1 font-jakarta  border-[#000000] border font-bold ">Amp Rack</h2>
-          </div>
-            <h4 className="mt-4 text-[#000000] font-jakarta text-lg md:text-xl  font-light">
-              CAD-Designed Amplifier Rack
-            </h4>
-            <p className=" mt-3 md:mt-6 mb-5 md:mb-0 text-gray-800 font-jakarta leading-relaxed  text-md  max-w-lg  font-light">
-              Our amplifier racks are meticulously CAD-designed for exact fitment and maximum efficiency. Each rack is engineered to optimize airflow, minimize vibration, and ensure clean, organized installation, delivering reliable performance and longevity for high-end audio systems. Customizable to your vehicle layout, these racks combine structural integrity with a sleek, professional finish.
-            </p>
-          </div>
-        </div>
-
-        {/* 4. CUSTOM ENCLOSURES — Image Right */}
-        <div className="flex flex-col md:flex-row-reverse items-start justify-start">
-          <div className="w-full md:w-1/2 h-[250px] md:h-[450px]">
-            <img src="/Images/service4.jpg" alt="Custom Enclosures" loading="lazy" className="w-full h-full object-cover" />
-          </div>
-          <div className="w-full md:w-1/2 flex flex-col justify-start text-start px-6 md:px-12 pt-6 md:pt-12">
-            <div className='flex' >
-            <h2 className="text-lg px-5 text-[#000000] py-1 font-jakarta  border-[#000000] border font-bold ">Custom Enclosures</h2>
-            </div>
-            <h4 className="mt-4 text-[#000000] font-jakarta text-lg md:text-xl   font-light">
-              Premium Material Craftsmanship
-            </h4>
-            <p className=" mt-3 md:mt-6 mb-5 md:mb-0 text-gray-800 font-jakarta leading-relaxed  text-md  max-w-lg  font-light">
-              Our custom enclosures are precision-crafted using fiberglass, carbon fiber, MDF, and other exotic materials to perfectly fit your vehicle. Each enclosure is designed for optimal acoustic performance, structural integrity, and seamless integration, delivering superior sound quality while complementing your car's interior aesthetics.
-            </p>
-          </div>
-        </div>
-
+        <div className="w-12 h-[1px] bg-zinc-300 mx-auto mt-4 md:mt-6" />
       </div>
-  )
-}
 
-export default ServicesSection
+      {services.map((service, i) => (
+        <div
+          key={i}
+          className={`flex flex-col ${service.reverse ? "md:flex-row-reverse" : "md:flex-row"} items-center max-w-7xl mx-auto px-4 gap-6 md:gap-16`}
+        >
+          <div className="w-full md:w-1/2 aspect-[4/3] max-h-[260px] sm:max-h-[340px] md:h-[400px] md:max-h-none overflow-hidden bg-zinc-50 rounded-sm">
+            <img
+              src={service.img}
+              alt={service.title}
+              loading={i === 0 ? "eager" : "lazy"}
+              className="w-full h-full object-cover"
+            />
+          </div>
+
+          <div className="w-full md:w-1/2 flex flex-col justify-center text-left px-1 sm:px-2 md:px-0">
+            <h3 className="text-xl md:text-3xl font-light text-zinc-950 tracking-tight">
+              {service.title}
+            </h3>
+            <h4 className="mt-1 md:mt-2 text-[10px] md:text-base font-medium tracking-wider uppercase text-zinc-400">
+              {service.subtitle}
+            </h4>
+            <p className="mt-3 md:mt-5 text-zinc-500 leading-relaxed text-xs sm:text-sm md:text-base font-light max-w-xl">
+              {service.description}
+            </p>
+          </div>
+        </div>
+      ))}
+    </section>
+  );
+}
