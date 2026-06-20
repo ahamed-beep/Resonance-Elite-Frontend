@@ -73,7 +73,12 @@ const Contact = () => {
         <section
           aria-label="Contact page hero"
           className="relative w-full h-[450px] sm:h-[50vh] md:h-[60vh] overflow-hidden bg-zinc-950"
-        >
+        >    <img
+          src="/Images/about/hero.webp"
+          alt="Resonance Elite about us"
+          className="w-full h-full object-cover opacity-60"
+          loading="eager"
+        />
         
           <div className="absolute inset-0 flex flex-col items-center justify-center text-center px-4 sm:px-6 bg-black/10">
             <h1 className="text-white text-2xl sm:text-3xl md:text-5xl font-semibold tracking-tight uppercase">

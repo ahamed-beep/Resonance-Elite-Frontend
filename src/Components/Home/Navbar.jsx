@@ -123,20 +123,28 @@ const Navbar = () => {
                   Services
                 </Link>
               </li>
+
+              {/* Brands — click = /brands page, hover = dropdown */}
               <li
                 role="none"
                 onMouseEnter={() => handleEnter("brands")}
                 onMouseLeave={handleLeave}
               >
-                <span
-                  className={navItemClass("brands")}
-                  role="menuitem"
-                  aria-haspopup="true"
-                  aria-expanded={openMenu === "brands"}
-                >
-                  Brands
-                </span>
+                <div className=" mt-2 flex items-center gap-1">
+                  <Link
+                    href="/brands"
+                    onClick={() => setOpenMenu(null)}
+                    className={navItemClass("brands")}
+                    role="menuitem"
+                  >
+                    Brands
+                  </Link>
+                  {/* Chevron — sirf dropdown trigger ke liye */}
+           
+                </div>
               </li>
+
+              {/* Products — hover = dropdown only */}
               <li
                 role="none"
                 onMouseEnter={() => handleEnter("products")}
@@ -151,6 +159,7 @@ const Navbar = () => {
                   Products
                 </span>
               </li>
+
               <li role="none">
                 <Link href="/projects" className={navLinkClass} role="menuitem">
                   Projects
@@ -220,12 +229,13 @@ const Navbar = () => {
         >
           <div className="mx-auto grid grid-cols-2 h-[480px]">
             <div className="flex flex-col px-12 py-9">
+              {/* View All Brands — /brands page pe jata hai */}
               <Link
-                href="/products"
+                href="/brands"
                 className="text-[13px] font-semibold tracking-[0.12em] uppercase text-black mb-8 hover:text-gray-500 transition"
                 onClick={() => setOpenMenu(null)}
               >
-                SHOP ALL BRANDS ›
+                VIEW ALL BRANDS ›
               </Link>
               <div className="grid grid-cols-2 gap-x-10">
                 {brands.map((col, colIdx) => (
@@ -233,7 +243,7 @@ const Navbar = () => {
                     {col.map((brand) => (
                       <Link
                         key={brand}
-                        href={`/products?brand=${encodeURIComponent(brand)}`}
+                        href={`/brands#${brand.toLowerCase().replace(/\s+/g, "-")}`}
                         onClick={() => setOpenMenu(null)}
                         onMouseEnter={() => setActiveBrandImage(brandImages[brand])}
                         onMouseLeave={() => setActiveBrandImage(null)}
@@ -337,21 +347,33 @@ const Navbar = () => {
 
             {/* Mobile Brands */}
             <div className="border-b border-gray-100 pb-2">
-              <button
-                className="w-full flex justify-between items-center text-base font-medium tracking-wider uppercase text-gray-800 focus:outline-none"
-                onClick={() =>
-                  setMobileSubMenu(mobileSubMenu === "brands" ? null : "brands")
-                }
-                aria-expanded={mobileSubMenu === "brands"}
-                aria-controls="mobile-brands"
-              >
-                <span>Brands</span>
-                {mobileSubMenu === "brands" ? (
-                  <ChevronUp className="w-4 h-4" />
-                ) : (
-                  <ChevronDown className="w-4 h-4" />
-                )}
-              </button>
+              <div className="flex items-center justify-between">
+                {/* Brands text = /brands page link */}
+                <Link
+                  href="/brands"
+                  className="text-base font-medium tracking-wider uppercase text-gray-800 hover:text-black transition"
+                  onClick={() => setMobileMenuOpen(false)}
+                >
+                  Brands
+                </Link>
+                {/* Chevron = dropdown toggle */}
+                <button
+                  className="p-1 text-gray-500 hover:text-black focus:outline-none"
+                  onClick={() =>
+                    setMobileSubMenu(mobileSubMenu === "brands" ? null : "brands")
+                  }
+                  aria-expanded={mobileSubMenu === "brands"}
+                  aria-controls="mobile-brands"
+                  aria-label="Toggle brands submenu"
+                >
+                  {mobileSubMenu === "brands" ? (
+                    <ChevronUp className="w-4 h-4" />
+                  ) : (
+                    <ChevronDown className="w-4 h-4" />
+                  )}
+                </button>
+              </div>
+
               {mobileSubMenu === "brands" && (
                 <div
                   id="mobile-brands"
@@ -360,7 +382,7 @@ const Navbar = () => {
                   {brands.flat().map((brand) => (
                     <Link
                       key={brand}
-                      href={`/products?brand=${encodeURIComponent(brand)}`}
+                      href={`/brands#${brand.toLowerCase().replace(/\s+/g, "-")}`}
                       className="text-sm py-1.5 text-gray-600 font-medium uppercase tracking-wide hover:text-black"
                       onClick={() => setMobileMenuOpen(false)}
                     >
@@ -455,7 +477,7 @@ const Navbar = () => {
               Contact
             </Link>
 
-            {/* Admin Login — mobile toggle ke andar, sabse neeche */}
+            {/* Admin Login */}
             <div className="border-t border-gray-100 pt-5 mt-1">
               <Link
                 href="/admin/login"
