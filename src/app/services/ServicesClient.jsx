@@ -13,8 +13,8 @@ const servicesData = [
     subtitle: "Bespoke System Architecture",
     desc: "Professional car audio system consultation tailored to your vehicle, goals, and budget. We guide you in selecting the right components and system design for optimal sound performance and efficiency.",
     images: [
-      "/Images/services/CONSULTATIONS/image1.webp",
       "/Images/services/CONSULTATIONS/image2.webp",
+      "/Images/services/CONSULTATIONS/image1.webp",
       "/Images/services/CONSULTATIONS/image3.webp",
       "/Images/services/CONSULTATIONS/image4.webp",
       "/Images/services/CONSULTATIONS/image5.webp",
@@ -102,7 +102,12 @@ export default function ServicesClient() {
 <Navbar/>
       {/* Hero */}
       <div className="relative w-full h-[40vh] sm:h-[50vh] md:h-[60vh] overflow-hidden bg-zinc-950">
-    
+        <img
+          src="/Images/about/hero.webp"
+          alt="Resonance Elite about us"
+          className="w-full h-full object-cover opacity-60"
+          loading="eager"
+        />
         <div className="absolute inset-0 flex flex-col items-center justify-center text-center px-4 bg-black/10">
           <h1 className="text-white text-2xl sm:text-3xl md:text-5xl font-light tracking-tight uppercase">
             Our Services

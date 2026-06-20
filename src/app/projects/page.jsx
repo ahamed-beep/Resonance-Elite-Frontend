@@ -97,14 +97,12 @@ export default function ProjectsPage() {
           aria-label="Projects showcase hero"
           className="relative w-full h-[35vh] sm:h-[45vh] md:h-[55vh] overflow-hidden bg-zinc-950"
         >
-          <Image
-            src="/services.webp"
-            alt="Resonance Elite car audio projects showcase"
-            fill
-            priority
-            sizes="100vw"
-            className="object-cover opacity-40 scale-105"
-          />
+            <img
+          src="/Images/about/hero.webp"
+          alt="Resonance Elite about us"
+          className="w-full h-full object-cover opacity-60"
+          loading="eager"
+        />
           <div className="absolute inset-0 bg-gradient-to-t from-zinc-950/30 to-transparent" aria-hidden="true" />
           <div className="absolute inset-0 flex flex-col items-center justify-center text-center px-4">
             <h1 className="text-white text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-light tracking-widest uppercase">
