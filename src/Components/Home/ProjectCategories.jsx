@@ -9,7 +9,7 @@ const ProjectCategories = () => {
 
       {/* Horizontal scroll container for mobile */}
       <div className="mt-12 overflow-x-auto md:overflow-visible">
-        <div className="flex md:grid md:grid-cols-3 gap-10 max-w-6xl mx-auto min-w-max md:min-w-0">
+        <div className="flex md:grid md:grid-cols-3 gap-10  mx-auto min-w-max md:min-w-0">
           {[
          { title: "SQ Projects", img: "/Images/home/project/project1.webp" },
     { title: "SQL Projects", img: "/Images/home/project/project2.webp" },

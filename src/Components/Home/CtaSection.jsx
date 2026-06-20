@@ -3,7 +3,7 @@ import React from 'react'
 const CtaSection = () => {
   return (
      <div className="bg-white  pb-5 md:py-10">
-        <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-0 items-stretch">
+        <div className=" mx-auto grid grid-cols-1 md:grid-cols-2 gap-0 items-stretch">
 
           {/* LEFT */}
           <div className="flex flex-col justify-center text-left py-6 md:py-0 px-6 md:px-10">

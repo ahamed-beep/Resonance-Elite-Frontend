@@ -3,7 +3,7 @@
 import { useState, useRef } from "react";
 import Link from "next/link";
 import Image from "next/image";
-import { Search, ShoppingBag, User, Menu, X, ChevronDown, ChevronUp } from "lucide-react";
+import { Menu, X, ChevronDown, ChevronUp } from "lucide-react";
 
 const brands = [
   ["Brax", "Blam", "Morel", "Gladen", "Helix", "Mosconi"],
@@ -35,8 +35,21 @@ const productImages = {
 const DEFAULT_BRAND_IMAGE = "/Images/home/navbar/brand.webp";
 const DEFAULT_PRODUCT_IMAGE = "/Images/home/navbar/product.webp";
 
-const carAudioProducts = ["Amplifiers", "Subwoofers", "Speakers", "DSPs", "Cables & Wiring", "Accessories"];
+const carAudioProducts = [
+  "Amplifiers",
+  "Subwoofers",
+  "Speakers",
+  "DSPs",
+  "Cables & Wiring",
+  "Accessories",
+];
 const homeAudioProducts = ["Amplifiers", "Speakers", "Subwoofers"];
+
+const navLinkClass =
+  "relative cursor-pointer text-[13px] font-semibold tracking-widest uppercase nav-font text-gray-600 hover:text-black transition";
+
+const dropItemClass =
+  "block text-[13px] font-semibold tracking-widest uppercase nav-font py-2.5 cursor-pointer text-gray-800 hover:text-black transition";
 
 const Navbar = () => {
   const [openMenu, setOpenMenu] = useState(null);
@@ -53,10 +66,13 @@ const Navbar = () => {
   };
 
   const handleLeave = () => {
-    timeoutRef.current = setTimeout(() => {
-      setOpenMenu(null);
-    }, 150);
+    timeoutRef.current = setTimeout(() => setOpenMenu(null), 150);
   };
+
+  const navItemClass = (menu) =>
+    `cursor-pointer relative pb-1 transition text-[13px] font-semibold tracking-widest uppercase nav-font ${
+      openMenu === menu ? "text-black" : "text-gray-600 hover:text-black"
+    }`;
 
   const dropdownClass = (menu) =>
     `fixed left-0 top-16 w-full bg-gray-100 shadow-lg transition-all duration-300 z-40 ${
@@ -64,17 +80,6 @@ const Navbar = () => {
         ? "opacity-100 visible translate-y-0"
         : "opacity-0 invisible -translate-y-2 pointer-events-none"
     }`;
-
-  const navItemClass = (menu) =>
-    `cursor-pointer relative pb-1 transition text-[13px] font-semibold tracking-widest uppercase nav-font ${
-      openMenu === menu ? "text-black" : "text-gray-600 hover:text-black"
-    }`;
-
-  const navLinkClass =
-    "relative cursor-pointer text-[13px] font-semibold tracking-widest uppercase nav-font text-gray-600 hover:text-black transition";
-
-  const dropItemClass =
-    "block text-[13px] font-semibold tracking-widest uppercase nav-font py-2.5 cursor-pointer text-gray-800 hover:text-black transition";
 
   return (
     <>
@@ -90,11 +95,16 @@ const Navbar = () => {
         >
           <div className="max-w-7xl mx-auto px-4 sm:px-6 md:px-8 h-16 flex items-center justify-between">
 
+            {/* Logo */}
             <div className="flex-shrink-0">
-              <Link href="/" onClick={() => setMobileMenuOpen(false)} aria-label="Go to homepage">
+              <Link
+                href="/"
+                onClick={() => setMobileMenuOpen(false)}
+                aria-label="Go to homepage"
+              >
                 <Image
                   src="/Logo.svg"
-                  alt="Company Logo"
+                  alt="Resonance Elite Logo"
                   width={120}
                   height={28}
                   priority
@@ -103,48 +113,98 @@ const Navbar = () => {
               </Link>
             </div>
 
-            <ul className="hidden md:flex flex-1 justify-center items-center gap-10 mt-2 list-none m-0 p-0" role="menubar">
+            {/* Desktop Nav Links */}
+            <ul
+              className="hidden md:flex flex-1 justify-center items-center gap-10 mt-2 list-none m-0 p-0"
+              role="menubar"
+            >
               <li role="none">
-                <Link href="/services" className={navLinkClass} role="menuitem">Services</Link>
+                <Link href="/services" className={navLinkClass} role="menuitem">
+                  Services
+                </Link>
               </li>
-              <li role="none" onMouseEnter={() => handleEnter("brands")} onMouseLeave={handleLeave}>
-                <Link href="/products" className={navItemClass("brands")} role="menuitem" aria-haspopup="true" aria-expanded={openMenu === "brands"}>
+              <li
+                role="none"
+                onMouseEnter={() => handleEnter("brands")}
+                onMouseLeave={handleLeave}
+              >
+                <span
+                  className={navItemClass("brands")}
+                  role="menuitem"
+                  aria-haspopup="true"
+                  aria-expanded={openMenu === "brands"}
+                >
                   Brands
-                </Link>
+                </span>
               </li>
-              <li role="none" onMouseEnter={() => handleEnter("products")} onMouseLeave={handleLeave}>
-                <Link href="/products" className={navItemClass("products")} role="menuitem" aria-haspopup="true" aria-expanded={openMenu === "products"}>
+              <li
+                role="none"
+                onMouseEnter={() => handleEnter("products")}
+                onMouseLeave={handleLeave}
+              >
+                <span
+                  className={navItemClass("products")}
+                  role="menuitem"
+                  aria-haspopup="true"
+                  aria-expanded={openMenu === "products"}
+                >
                   Products
+                </span>
+              </li>
+              <li role="none">
+                <Link href="/projects" className={navLinkClass} role="menuitem">
+                  Projects
                 </Link>
               </li>
               <li role="none">
-                <Link href="/projects" className={navLinkClass} role="menuitem">Projects</Link>
+                <Link href="/about" className={navLinkClass} role="menuitem">
+                  About
+                </Link>
               </li>
               <li role="none">
-                <Link href="/about" className={navLinkClass} role="menuitem">About</Link>
-              </li>
-              <li role="none">
-                <Link href="/contact" className={navLinkClass} role="menuitem">Contact</Link>
+                <Link href="/contact" className={navLinkClass} role="menuitem">
+                  Contact
+                </Link>
               </li>
             </ul>
 
+            {/* Right Icons */}
             <div className="flex items-center gap-3 md:gap-5 mt-2">
-              <Link href="/account" aria-label="Account" className="text-black hover:opacity-70 transition-opacity">
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" className="size-5 md:size-6">
-                  <path fillRule="evenodd" d="M7.5 6a4.5 4.5 0 1 1 9 0 4.5 4.5 0 0 1-9 0ZM3.751 20.105a8.25 8.25 0 0 1 16.498 0 .75.75 0 0 1-.437.695A18.683 18.683 0 0 1 12 22.5c-2.786 0-5.433-.608-7.812-1.7a.75.75 0 0 1-.437-.695Z" clipRule="evenodd" />
+
+              {/* Admin icon — sirf desktop */}
+              <Link
+                href="/admin/login"
+                aria-label="Admin Login"
+                className="hidden md:flex items-center text-black hover:opacity-70 transition-opacity"
+              >
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  viewBox="0 0 24 24"
+                  fill="currentColor"
+                  className="size-6"
+                  aria-hidden="true"
+                >
+                  <path
+                    fillRule="evenodd"
+                    d="M7.5 6a4.5 4.5 0 1 1 9 0 4.5 4.5 0 0 1-9 0ZM3.751 20.105a8.25 8.25 0 0 1 16.498 0 .75.75 0 0 1-.437.695A18.683 18.683 0 0 1 12 22.5c-2.786 0-5.433-.608-7.812-1.7a.75.75 0 0 1-.437-.695Z"
+                    clipRule="evenodd"
+                  />
                 </svg>
               </Link>
 
-           
-
+              {/* Hamburger — sirf mobile */}
               <button
-                className="md:hidden p-1 text-gray-600 hover:text-black transition focus:outline-none"
+                className="flex md:hidden p-1 text-gray-600 hover:text-black transition focus:outline-none"
                 onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
                 aria-label={mobileMenuOpen ? "Close menu" : "Open menu"}
                 aria-expanded={mobileMenuOpen}
                 aria-controls="mobile-menu"
               >
-                {mobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
+                {mobileMenuOpen ? (
+                  <X className="w-6 h-6" />
+                ) : (
+                  <Menu className="w-6 h-6" />
+                )}
               </button>
             </div>
           </div>
@@ -204,11 +264,13 @@ const Navbar = () => {
           role="region"
           aria-label="Products menu"
         >
-          <div className="max-w-7xl mx-auto grid grid-cols-2 h-[480px]">
+          <div className="mx-auto grid grid-cols-2 h-[480px]">
             <div className="flex flex-col px-12 py-9">
               <div className="grid grid-cols-2 gap-x-20">
                 <div>
-                  <h2 className="text-[15px] font-bold uppercase tracking-[0.15em] mb-6 text-black">Car Audio</h2>
+                  <h2 className="text-[15px] font-bold uppercase tracking-[0.15em] mb-6 text-black">
+                    Car Audio
+                  </h2>
                   <div className="flex flex-col">
                     {carAudioProducts.map((product) => (
                       <Link
@@ -225,7 +287,9 @@ const Navbar = () => {
                   </div>
                 </div>
                 <div>
-                  <h2 className="text-[15px] font-bold uppercase tracking-[0.15em] mb-6 text-black">Home Audio</h2>
+                  <h2 className="text-[15px] font-bold uppercase tracking-[0.15em] mb-6 text-black">
+                    Home Audio
+                  </h2>
                   <div className="flex flex-col">
                     {homeAudioProducts.map((product) => (
                       <Link
@@ -253,7 +317,7 @@ const Navbar = () => {
           </div>
         </div>
 
-        {/* Mobile Menu */}
+        {/* Mobile Menu Drawer */}
         <div
           id="mobile-menu"
           className={`fixed inset-0 top-16 bg-white z-40 transition-transform duration-300 md:hidden overflow-y-auto h-[calc(100vh-64px)] ${
@@ -262,22 +326,37 @@ const Navbar = () => {
           aria-hidden={!mobileMenuOpen}
         >
           <div className="p-6 flex flex-col gap-6">
-            <Link href="/services" className="text-base font-medium tracking-wider uppercase text-gray-800" onClick={() => setMobileMenuOpen(false)}>
+
+            <Link
+              href="/services"
+              className="text-base font-medium tracking-wider uppercase text-gray-800 hover:text-black transition"
+              onClick={() => setMobileMenuOpen(false)}
+            >
               Services
             </Link>
 
-            <div className="border-b border-gray-50 pb-2">
+            {/* Mobile Brands */}
+            <div className="border-b border-gray-100 pb-2">
               <button
                 className="w-full flex justify-between items-center text-base font-medium tracking-wider uppercase text-gray-800 focus:outline-none"
-                onClick={() => setMobileSubMenu(mobileSubMenu === "brands" ? null : "brands")}
+                onClick={() =>
+                  setMobileSubMenu(mobileSubMenu === "brands" ? null : "brands")
+                }
                 aria-expanded={mobileSubMenu === "brands"}
                 aria-controls="mobile-brands"
               >
                 <span>Brands</span>
-                {mobileSubMenu === "brands" ? <ChevronUp className="w-4 h-4" /> : <ChevronDown className="w-4 h-4" />}
+                {mobileSubMenu === "brands" ? (
+                  <ChevronUp className="w-4 h-4" />
+                ) : (
+                  <ChevronDown className="w-4 h-4" />
+                )}
               </button>
               {mobileSubMenu === "brands" && (
-                <div id="mobile-brands" className="mt-3 grid grid-cols-2 gap-x-4 gap-y-2 bg-gray-50 p-4 rounded-sm">
+                <div
+                  id="mobile-brands"
+                  className="mt-3 grid grid-cols-2 gap-x-4 gap-y-2 bg-gray-50 p-4 rounded-sm"
+                >
                   {brands.flat().map((brand) => (
                     <Link
                       key={brand}
@@ -292,20 +371,32 @@ const Navbar = () => {
               )}
             </div>
 
-            <div className="border-b border-gray-50 pb-2">
+            {/* Mobile Products */}
+            <div className="border-b border-gray-100 pb-2">
               <button
                 className="w-full flex justify-between items-center text-base font-medium tracking-wider uppercase text-gray-800 focus:outline-none"
-                onClick={() => setMobileSubMenu(mobileSubMenu === "products" ? null : "products")}
+                onClick={() =>
+                  setMobileSubMenu(mobileSubMenu === "products" ? null : "products")
+                }
                 aria-expanded={mobileSubMenu === "products"}
                 aria-controls="mobile-products"
               >
                 <span>Products</span>
-                {mobileSubMenu === "products" ? <ChevronUp className="w-4 h-4" /> : <ChevronDown className="w-4 h-4" />}
+                {mobileSubMenu === "products" ? (
+                  <ChevronUp className="w-4 h-4" />
+                ) : (
+                  <ChevronDown className="w-4 h-4" />
+                )}
               </button>
               {mobileSubMenu === "products" && (
-                <div id="mobile-products" className="mt-3 flex flex-col gap-5 bg-gray-50 p-4 rounded-sm">
+                <div
+                  id="mobile-products"
+                  className="mt-3 flex flex-col gap-5 bg-gray-50 p-4 rounded-sm"
+                >
                   <div>
-                    <h3 className="text-xs font-bold uppercase tracking-widest text-gray-400 mb-3">Car Audio</h3>
+                    <h3 className="text-xs font-bold uppercase tracking-widest text-gray-400 mb-3">
+                      Car Audio
+                    </h3>
                     <div className="grid grid-cols-2 gap-x-4 gap-y-2">
                       {carAudioProducts.map((p) => (
                         <Link
@@ -320,7 +411,9 @@ const Navbar = () => {
                     </div>
                   </div>
                   <div>
-                    <h3 className="text-xs font-bold uppercase tracking-widest text-gray-400 mb-3">Home Audio</h3>
+                    <h3 className="text-xs font-bold uppercase tracking-widest text-gray-400 mb-3">
+                      Home Audio
+                    </h3>
                     <div className="grid grid-cols-2 gap-x-4 gap-y-2">
                       {homeAudioProducts.map((p) => (
                         <Link
@@ -338,15 +431,55 @@ const Navbar = () => {
               )}
             </div>
 
-            <Link href="/projects" className="text-base font-medium tracking-wider uppercase text-gray-800" onClick={() => setMobileMenuOpen(false)}>
+            <Link
+              href="/projects"
+              className="text-base font-medium tracking-wider uppercase text-gray-800 hover:text-black transition"
+              onClick={() => setMobileMenuOpen(false)}
+            >
               Projects
             </Link>
-            <Link href="/about" className="text-base font-medium tracking-wider uppercase text-gray-800" onClick={() => setMobileMenuOpen(false)}>
+
+            <Link
+              href="/about"
+              className="text-base font-medium tracking-wider uppercase text-gray-800 hover:text-black transition"
+              onClick={() => setMobileMenuOpen(false)}
+            >
               About
             </Link>
-            <Link href="/contact" className="text-base font-medium tracking-wider uppercase text-gray-800" onClick={() => setMobileMenuOpen(false)}>
+
+            <Link
+              href="/contact"
+              className="text-base font-medium tracking-wider uppercase text-gray-800 hover:text-black transition"
+              onClick={() => setMobileMenuOpen(false)}
+            >
               Contact
             </Link>
+
+            {/* Admin Login — mobile toggle ke andar, sabse neeche */}
+            <div className="border-t border-gray-100 pt-5 mt-1">
+              <Link
+                href="/admin/login"
+                onClick={() => setMobileMenuOpen(false)}
+                className="flex items-center gap-3 text-base font-medium tracking-wider uppercase text-gray-800 hover:text-black transition"
+                aria-label="Admin Login"
+              >
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  viewBox="0 0 24 24"
+                  fill="currentColor"
+                  className="size-5"
+                  aria-hidden="true"
+                >
+                  <path
+                    fillRule="evenodd"
+                    d="M7.5 6a4.5 4.5 0 1 1 9 0 4.5 4.5 0 0 1-9 0ZM3.751 20.105a8.25 8.25 0 0 1 16.498 0 .75.75 0 0 1-.437.695A18.683 18.683 0 0 1 12 22.5c-2.786 0-5.433-.608-7.812-1.7a.75.75 0 0 1-.437-.695Z"
+                    clipRule="evenodd"
+                  />
+                </svg>
+                <span>Admin</span>
+              </Link>
+            </div>
+
           </div>
         </div>
       </header>
