@@ -41,7 +41,7 @@ export default function ServicesSection() {
       aria-label="Our services"
       className="bg-white py-12 md:py-16 space-y-16 md:space-y-24 overflow-x-hidden"
     >
-      <div className="max-w-4xl mx-auto text-center px-4">
+      <div className=" mx-auto text-center px-4">
         <h2 className="text-xl sm:text-2xl md:text-4xl font-light text-zinc-900 tracking-tight">
           From Structure to Sound Perfection in Every Detail
         </h2>
