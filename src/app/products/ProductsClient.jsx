@@ -351,7 +351,7 @@ export default function ProductsClient({ initialProducts, brands, categoryGroups
                         className="block overflow-hidden bg-zinc-100 relative aspect-[4/3] w-full"
                         aria-label={`View ${product.name}`}
                       >
-                        <Image
+                        <img
                           src={product.images[0]}
                           alt={`${product.name} by ${product.brand}`}
                           fill

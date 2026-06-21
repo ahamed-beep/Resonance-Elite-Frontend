@@ -1,10 +1,9 @@
 import Image from "next/image";
-import { products, brands, categoryGroups } from "@/lib/products";
+import { getProducts, brands, categoryGroups } from "@/lib/products";
 import { Suspense } from "react";
 import Navbar from "@/Components/Home/Navbar";
 import Footer from "@/Components/Home/Footer";
 import ProductsClient from "./ProductsClient";
-
 
 export const metadata = {
   title: "Premium Car & Home Audio Products | Resonance Elite",
@@ -56,33 +55,32 @@ export const metadata = {
   },
 };
 
-const productsJsonLd = {
-  "@context": "https://schema.org",
-  "@type": "CollectionPage",
-  name: "Premium Audio Products | Resonance Elite",
-  description:
-    "Car and home audio products from top global brands available at Resonance Elite.",
-  url: "https://resonanceelite.com/products",
-  publisher: {
-    "@type": "Organization",
-    name: "Resonance Elite",
-    url: "https://resonanceelite.com",
-  },
-  numberOfItems: products.length,
-};
+export default async function ProductsPage() {
+  const products = await getProducts();
 
-export default function ProductsPage() {
+  const productsJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "CollectionPage",
+    name: "Premium Audio Products | Resonance Elite",
+    description:
+      "Car and home audio products from top global brands available at Resonance Elite.",
+    url: "https://resonanceelite.com/products",
+    publisher: {
+      "@type": "Organization",
+      name: "Resonance Elite",
+      url: "https://resonanceelite.com",
+    },
+    numberOfItems: products.length,
+  };
+
   return (
     <>
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(productsJsonLd) }}
       />
-      <Navbar/>
-
+      <Navbar />
       <div className="min-h-screen bg-white text-black antialiased">
-
-        {/* Hero Banner */}
         <div className="relative w-full h-36 sm:h-48 md:h-60 lg:h-72 overflow-hidden bg-zinc-950">
           <Image
             src="https://images.unsplash.com/photo-1545454675-3531b543be5d?q=80&w=2070&auto=format&fit=crop"
@@ -103,18 +101,15 @@ export default function ProductsPage() {
             </div>
           </div>
         </div>
-
-        {/* Client Component handles all filtering, sorting, pagination */}
-    <Suspense fallback={<div className="min-h-screen bg-white" />}>
-  <ProductsClient
-    initialProducts={products}
-    brands={brands}
-    categoryGroups={categoryGroups}
-  />
-</Suspense>
-
+        <Suspense fallback={<div className="min-h-screen bg-white" />}>
+          <ProductsClient
+            initialProducts={products}
+            brands={brands}
+            categoryGroups={categoryGroups}
+          />
+        </Suspense>
       </div>
-      <Footer/>
+      <Footer />
     </>
   );
 }

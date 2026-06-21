@@ -55,7 +55,7 @@ export default function ProductDetailClient({ product, relatedProducts }) {
           {/* Image */}
           <div className="w-full">
             <div className="aspect-[4/3] overflow-hidden border border-zinc-200 bg-zinc-50 rounded-sm group cursor-zoom-in relative">
-              <Image
+              <img
                 src={product.images[0]}
                 alt={`${product.name} by ${product.brand} — ${product.category}`}
                 fill

@@ -1,21 +1,20 @@
-import { products } from "@/lib/products";
+import { getProducts, getProduct } from "@/lib/products";
 import { notFound } from "next/navigation";
 import ProductDetailClient from "./ProductDetailClient";
 import Navbar from "@/Components/Home/Navbar";
 import Footer from "@/Components/Home/Footer";
 
 export async function generateStaticParams() {
+  const products = await getProducts();
   return products.map((p) => ({ id: String(p.id) }));
 }
 
 export async function generateMetadata({ params }) {
   const { id } = await params;
-  const product = products.find((p) => String(p.id) === String(id));
+  const product = await getProduct(id);
 
   if (!product) {
-    return {
-      title: "Product Not Found | Resonance Elite",
-    };
+    return { title: "Product Not Found | Resonance Elite" };
   }
 
   return {
@@ -35,14 +34,7 @@ export async function generateMetadata({ params }) {
       description: `${product.description} Priced at ${product.priceFormatted}.`,
       url: `https://resonanceelite.com/products/${id}`,
       siteName: "Resonance Elite",
-      images: [
-        {
-          url: product.images[0],
-          width: 1200,
-          height: 630,
-          alt: `${product.name} by ${product.brand}`,
-        },
-      ],
+      images: [{ url: product.images[0], width: 1200, height: 630, alt: `${product.name} by ${product.brand}` }],
       type: "website",
     },
     twitter: {
@@ -51,23 +43,19 @@ export async function generateMetadata({ params }) {
       description: `${product.description} Priced at ${product.priceFormatted}.`,
       images: [product.images[0]],
     },
-    alternates: {
-      canonical: `https://resonanceelite.com/products/${id}`,
-    },
-    robots: {
-      index: true,
-      follow: true,
-    },
+    alternates: { canonical: `https://resonanceelite.com/products/${id}` },
+    robots: { index: true, follow: true },
   };
 }
 
 export default async function ProductDetailPage({ params }) {
   const { id } = await params;
-  const product = products.find((p) => String(p.id) === String(id));
+  const product = await getProduct(id);
 
   if (!product) notFound();
 
-  const relatedProducts = products
+  const allProducts = await getProducts();
+  const relatedProducts = allProducts
     .filter(
       (p) =>
         String(p.id) !== String(id) &&
@@ -83,10 +71,7 @@ export default async function ProductDetailPage({ params }) {
     name: product.name,
     description: product.description,
     sku: product.sku,
-    brand: {
-      "@type": "Brand",
-      name: product.brand,
-    },
+    brand: { "@type": "Brand", name: product.brand },
     image: product.images[0],
     offers: {
       "@type": "Offer",
@@ -95,10 +80,7 @@ export default async function ProductDetailPage({ params }) {
       availability: product.inStock
         ? "https://schema.org/InStock"
         : "https://schema.org/OutOfStock",
-      seller: {
-        "@type": "Organization",
-        name: "Resonance Elite",
-      },
+      seller: { "@type": "Organization", name: "Resonance Elite" },
     },
     category: `${product.group} > ${product.category}`,
     url: `https://resonanceelite.com/products/${id}`,
@@ -110,9 +92,9 @@ export default async function ProductDetailPage({ params }) {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(productJsonLd) }}
       />
-      <Navbar/>
+      <Navbar />
       <ProductDetailClient product={product} relatedProducts={relatedProducts} />
-      <Footer/>
+      <Footer />
     </>
   );
 }
