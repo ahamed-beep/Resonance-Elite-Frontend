@@ -1,212 +1,57 @@
-export const brands = [
-  "Brax",
-  "Blam",
-  "Morel",
-  "Gladen",
-  "Helix",
-  "Mosconi",
-  "Match",
-  "DD Audio",
-  "DB Drive",
-  "DB Link",
-];
+const API_URL = "http://127.0.0.1:8000/api";
 
 export const categoryGroups = {
   "Car Audio": ["Amplifiers", "Subwoofers", "Speakers", "DSPs", "Cables & Wiring", "Accessories"],
   "Home Audio": ["Amplifiers", "Subwoofers", "Speakers"],
 };
 
-export const products = [
-  {
-    id: 1,
-    brand: "Helix",
-    group: "Car Audio",
-    category: "DSPs",
-    name: "Helix DSP Ultra",
-    description: "High-end 12 channel DSP with ultra clean signal processing. Features advanced 64-bit processing, 12-channel output, and high-resolution audio support up to 192kHz/32-bit.",
-    price: 320000,
-    priceFormatted: "PKR 320,000",
-    stock: 5,
-    inStock: true,
-    images: [
-      "https://images.unsplash.com/photo-1519677100203-a0e668c92439?q=80&w=1200&auto=format&fit=crop",
-    ],
-    sku: "HLX-DSP-ULTRA-01",
-  },
-  {
-    id: 2,
-    brand: "Morel",
-    group: "Car Audio",
-    category: "Speakers",
-    name: "Morel Hybrid 63",
-    description: "Premium audiophile speakers with crystal-clear vocals and advanced crossover network.",
-    price: 185000,
-    priceFormatted: "PKR 185,000",
-    stock: 0,
-    inStock: false,
-    images: [
-      "https://images.unsplash.com/photo-1545454675-3531b543be5d?q=80&w=1200&auto=format&fit=crop",
-    ],
-    sku: "MRL-HYB63-02",
-  },
-  {
-    id: 3,
-    brand: "DD Audio",
-    group: "Car Audio",
-    category: "Subwoofers",
-    name: "DD Audio 9515",
-    description: "Competition-grade subwoofer delivering deep aggressive bass.",
-    price: 275000,
-    priceFormatted: "PKR 275,000",
-    stock: 3,
-    inStock: true,
-    images: [
-      "https://images.unsplash.com/photo-1505740420928-5e560c06d30e?q=80&w=1200&auto=format&fit=crop",
-    ],
-    sku: "DDA-9515-03",
-  },
-  {
-    id: 4,
-    brand: "Mosconi",
-    group: "Car Audio",
-    category: "Amplifiers",
-    name: "Mosconi Pro 5|30",
-    description: "Compact premium amplifier engineered for SQ performance.",
-    price: 240000,
-    priceFormatted: "PKR 240,000",
-    stock: 2,
-    inStock: true,
-    images: [
-      "https://images.unsplash.com/photo-1511379938547-c1f69419868d?q=80&w=1200&auto=format&fit=crop",
-    ],
-    sku: "MSC-PRO530-04",
-  },
-  {
-    id: 5,
-    brand: "Blam",
-    group: "Car Audio",
-    category: "DSPs",
-    name: "Blam DSP Ultra",
-    description: "High-end 12 channel DSP with ultra clean signal processing.",
-    price: 320000,
-    priceFormatted: "PKR 320,000",
-    stock: 4,
-    inStock: true,
-    images: [
-      "https://images.unsplash.com/photo-1519677100203-a0e668c92439?q=80&w=1200&auto=format&fit=crop",
-    ],
-    sku: "BLM-DSP-ULTRA-05",
-  },
-  {
-    id: 6,
-    brand: "Brax",
-    group: "Car Audio",
-    category: "Speakers",
-    name: "Brax Hybrid 63",
-    description: "Premium audiophile speakers with crystal-clear vocals.",
-    price: 185000,
-    priceFormatted: "PKR 185,000",
-    stock: 6,
-    inStock: true,
-    images: [
-      "https://images.unsplash.com/photo-1545454675-3531b543be5d?q=80&w=1200&auto=format&fit=crop",
-    ],
-    sku: "BRX-HYB63-06",
-  },
-  {
-    id: 7,
-    brand: "Gladen",
-    group: "Car Audio",
-    category: "Subwoofers",
-    name: "Gladen RS 10",
-    description: "Competition-grade subwoofer delivering deep aggressive bass.",
-    price: 275000,
-    priceFormatted: "PKR 275,000",
-    stock: 3,
-    inStock: true,
-    images: [
-      "https://images.unsplash.com/photo-1505740420928-5e560c06d30e?q=80&w=1200&auto=format&fit=crop",
-    ],
-    sku: "GLD-RS10-07",
-  },
-  {
-    id: 8,
-    brand: "Match",
-    group: "Car Audio",
-    category: "Amplifiers",
-    name: "Match UP 7DSP",
-    description: "Compact premium amplifier engineered for SQ performance.",
-    price: 240000,
-    priceFormatted: "PKR 240,000",
-    stock: 2,
-    inStock: true,
-    images: [
-      "https://images.unsplash.com/photo-1511379938547-c1f69419868d?q=80&w=1200&auto=format&fit=crop",
-    ],
-    sku: "MCH-UP7DSP-08",
-  },
-  {
-    id: 9,
-    brand: "Blam",
-    group: "Home Audio",
-    category: "DSPs",
-    name: "Blam Home DSP",
-    description: "High-end 12 channel DSP with ultra clean signal processing for home environments.",
-    price: 320000,
-    priceFormatted: "PKR 320,000",
-    stock: 1,
-    inStock: true,
-    images: [
-      "https://images.unsplash.com/photo-1519677100203-a0e668c92439?q=80&w=1200&auto=format&fit=crop",
-    ],
-    sku: "BLM-HDSP-09",
-  },
-  {
-    id: 10,
-    brand: "Brax",
-    group: "Home Audio",
-    category: "Speakers",
-    name: "Brax Home 63",
-    description: "Premium audiophile home speakers with crystal-clear vocals.",
-    price: 185000,
-    priceFormatted: "PKR 185,000",
-    stock: 4,
-    inStock: true,
-    images: [
-      "https://images.unsplash.com/photo-1545454675-3531b543be5d?q=80&w=1200&auto=format&fit=crop",
-    ],
-    sku: "BRX-HM63-10",
-  },
-  {
-    id: 11,
-    brand: "Gladen",
-    group: "Home Audio",
-    category: "Subwoofers",
-    name: "Gladen Home Sub",
-    description: "Competition-grade home subwoofer delivering deep aggressive bass.",
-    price: 275000,
-    priceFormatted: "PKR 275,000",
-    stock: 2,
-    inStock: true,
-    images: [
-      "https://images.unsplash.com/photo-1505740420928-5e560c06d30e?q=80&w=1200&auto=format&fit=crop",
-    ],
-    sku: "GLD-HMSUB-11",
-  },
-  {
-    id: 12,
-    brand: "Match",
-    group: "Home Audio",
-    category: "Amplifiers",
-    name: "Match Home Amp",
-    description: "Compact premium home amplifier engineered for SQ performance.",
-    price: 240000,
-    priceFormatted: "PKR 240,000",
-    stock: 3,
-    inStock: true,
-    images: [
-      "https://images.unsplash.com/photo-1511379938547-c1f69419868d?q=80&w=1200&auto=format&fit=crop",
-    ],
-    sku: "MCH-HMAMP-12",
-  },
+export const brands = [
+  "Brax", "Blam", "Morel", "Gladen", "Helix",
+  "Mosconi", "Match", "DD Audio", "DB Drive", "DB Link",
 ];
+
+export async function getProducts() {
+  const res = await fetch(`${API_URL}/products`, { cache: "no-store" });
+  if (!res.ok) return [];
+  const data = await res.json();
+  return data.map((p) => ({
+    id: p.id,
+    name: p.name,
+    brand: p.brand,
+    sku: p.sku,
+    group: p.audio_type,
+    category: p.category,
+    description: p.description,
+    price: p.price,
+    priceFormatted: `PKR ${Number(p.price).toLocaleString()}`,
+    stock: p.stock_quantity,
+    inStock: p.stock_status === "in_stock",
+    warehouse: p.warehouse,
+    images: p.images?.length
+      ? p.images.map((img) => `http://127.0.0.1:8000${img}`)
+      : ["https://images.unsplash.com/photo-1519677100203-a0e668c92439?q=80&w=1200&auto=format&fit=crop"],
+  }));
+}
+
+export async function getProduct(id) {
+  const res = await fetch(`${API_URL}/products/${id}`, { cache: "no-store" });
+  if (!res.ok) return null;
+  const p = await res.json();
+  return {
+    id: p.id,
+    name: p.name,
+    brand: p.brand,
+    sku: p.sku,
+    group: p.audio_type,
+    category: p.category,
+    description: p.description,
+    price: p.price,
+    priceFormatted: `PKR ${Number(p.price).toLocaleString()}`,
+    stock: p.stock_quantity,
+    inStock: p.stock_status === "in_stock",
+    warehouse: p.warehouse,
+    images: p.images?.length
+      ? p.images.map((img) => `http://127.0.0.1:8000${img}`)
+      : ["https://images.unsplash.com/photo-1519677100203-a0e668c92439?q=80&w=1200&auto=format&fit=crop"],
+  };
+}
