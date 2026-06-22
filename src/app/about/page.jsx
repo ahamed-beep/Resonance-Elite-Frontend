@@ -124,7 +124,7 @@ export default function About() {
 
       <div className="w-full h-[2vh] md:h-[4vh] bg-white" />
 
-      {/* VIDEO */}
+      
       <section className="relative w-full h-[40vh] sm:h-[55vh] md:h-[70vh] overflow-hidden bg-zinc-950" aria-label="Brand video">
         <video
           className="w-full h-full object-cover opacity-90"
