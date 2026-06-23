@@ -88,11 +88,10 @@ const Navbar = () => {
         .nav-font { font-family: 'Barlow', sans-serif; }
       `}</style>
 
-      {/* Header top par sticky locked hai */}
-      <header role="banner" className="sticky top-0 z-50 w-full">
+      <header role="banner">
         <nav
           aria-label="Main navigation"
-          className="nav-font w-full bg-white/95 backdrop-blur-md border-b border-gray-100 transition-all duration-300"
+          className="nav-font w-full bg-white/95 backdrop-blur-md sticky top-0 z-50 border-b border-gray-100 transition-all duration-300"
         >
           <div className="max-w-7xl mx-auto px-4 sm:px-6 md:px-8 h-16 flex items-center justify-between">
 
@@ -109,7 +108,7 @@ const Navbar = () => {
                   width={120}
                   height={28}
                   priority
-                  className="h-5.5 sm:h-7 w-auto object-contain"
+                  className="h-7 w-auto object-contain"
                 />
               </Link>
             </div>
@@ -125,7 +124,7 @@ const Navbar = () => {
                 </Link>
               </li>
 
-              {/* Brands */}
+              {/* Brands — click = /brands page, hover = dropdown */}
               <li
                 role="none"
                 onMouseEnter={() => handleEnter("brands")}
@@ -140,10 +139,12 @@ const Navbar = () => {
                   >
                     Brands
                   </Link>
+                  {/* Chevron — sirf dropdown trigger ke liye */}
+           
                 </div>
               </li>
 
-              {/* Products */}
+              {/* Products — hover = dropdown only */}
               <li
                 role="none"
                 onMouseEnter={() => handleEnter("products")}
@@ -179,7 +180,7 @@ const Navbar = () => {
             {/* Right Icons */}
             <div className="flex items-center gap-3 md:gap-5 mt-2">
 
-              {/* Admin icon */}
+              {/* Admin icon — sirf desktop */}
               <Link
                 href="/admin/login"
                 aria-label="Admin Login"
@@ -200,7 +201,7 @@ const Navbar = () => {
                 </svg>
               </Link>
 
-              {/* Hamburger */}
+              {/* Hamburger — sirf mobile */}
               <button
                 className="flex md:hidden p-1 text-gray-600 hover:text-black transition focus:outline-none"
                 onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
@@ -228,6 +229,7 @@ const Navbar = () => {
         >
           <div className="mx-auto grid grid-cols-2 h-[480px]">
             <div className="flex flex-col px-12 py-9">
+              {/* View All Brands — /brands page pe jata hai */}
               <Link
                 href="/brands"
                 className="text-[13px] font-semibold tracking-[0.12em] uppercase text-black mb-8 hover:text-gray-500 transition"
@@ -325,36 +327,36 @@ const Navbar = () => {
           </div>
         </div>
 
-        {/* Mobile Menu Drawer (Fixed Layout & Height) */}
+        {/* Mobile Menu Drawer */}
         <div
           id="mobile-menu"
-          className={`fixed left-0 right-0 top-16 bg-white z-40 border-b border-gray-200 shadow-xl transition-all duration-300 md:hidden overflow-y-auto h-auto max-h-[75vh] ${
-            mobileMenuOpen 
-              ? "opacity-100 visible translate-y-0" 
-              : "opacity-0 invisible -translate-y-2 pointer-events-none"
+          className={`fixed inset-0 top-16 bg-white z-40 transition-transform duration-300 md:hidden overflow-y-auto h-[calc(100vh-64px)] ${
+            mobileMenuOpen ? "translate-x-0" : "translate-x-full"
           }`}
           aria-hidden={!mobileMenuOpen}
         >
-          <div className="p-5 flex flex-col gap-5">
+          <div className="p-6 flex flex-col gap-6">
 
             <Link
               href="/services"
-              className="text-sm font-semibold tracking-wider uppercase text-gray-800 hover:text-black transition py-1"
+              className="text-base font-medium tracking-wider uppercase text-gray-800 hover:text-black transition"
               onClick={() => setMobileMenuOpen(false)}
             >
               Services
             </Link>
 
-            {/* Mobile Brands Dropdown Setup */}
+            {/* Mobile Brands */}
             <div className="border-b border-gray-100 pb-2">
-              <div className="flex items-center justify-between py-1">
+              <div className="flex items-center justify-between">
+                {/* Brands text = /brands page link */}
                 <Link
                   href="/brands"
-                  className="text-sm font-semibold tracking-wider uppercase text-gray-800 hover:text-black transition"
+                  className="text-base font-medium tracking-wider uppercase text-gray-800 hover:text-black transition"
                   onClick={() => setMobileMenuOpen(false)}
                 >
                   Brands
                 </Link>
+                {/* Chevron = dropdown toggle */}
                 <button
                   className="p-1 text-gray-500 hover:text-black focus:outline-none"
                   onClick={() =>
@@ -375,13 +377,13 @@ const Navbar = () => {
               {mobileSubMenu === "brands" && (
                 <div
                   id="mobile-brands"
-                  className="mt-2 grid grid-cols-2 gap-x-4 gap-y-2 bg-gray-50 p-3 rounded-md border border-gray-100/80"
+                  className="mt-3 grid grid-cols-2 gap-x-4 gap-y-2 bg-gray-50 p-4 rounded-sm"
                 >
                   {brands.flat().map((brand) => (
                     <Link
                       key={brand}
                       href={`/brands#${brand.toLowerCase().replace(/\s+/g, "-")}`}
-                      className="text-xs py-1.5 text-gray-600 font-semibold uppercase tracking-wide hover:text-black"
+                      className="text-sm py-1.5 text-gray-600 font-medium uppercase tracking-wide hover:text-black"
                       onClick={() => setMobileMenuOpen(false)}
                     >
                       {brand}
@@ -391,10 +393,10 @@ const Navbar = () => {
               )}
             </div>
 
-            {/* Mobile Products Dropdown Setup */}
+            {/* Mobile Products */}
             <div className="border-b border-gray-100 pb-2">
               <button
-                className="w-full flex justify-between items-center text-sm font-semibold tracking-wider uppercase text-gray-800 focus:outline-none py-1"
+                className="w-full flex justify-between items-center text-base font-medium tracking-wider uppercase text-gray-800 focus:outline-none"
                 onClick={() =>
                   setMobileSubMenu(mobileSubMenu === "products" ? null : "products")
                 }
@@ -411,18 +413,18 @@ const Navbar = () => {
               {mobileSubMenu === "products" && (
                 <div
                   id="mobile-products"
-                  className="mt-2 flex flex-col gap-4 bg-gray-50 p-3 rounded-md border border-gray-100/80"
+                  className="mt-3 flex flex-col gap-5 bg-gray-50 p-4 rounded-sm"
                 >
                   <div>
-                    <h3 className="text-[10px] font-bold uppercase tracking-widest text-gray-400 mb-2">
+                    <h3 className="text-xs font-bold uppercase tracking-widest text-gray-400 mb-3">
                       Car Audio
                     </h3>
-                    <div className="grid grid-cols-2 gap-x-4 gap-y-1">
+                    <div className="grid grid-cols-2 gap-x-4 gap-y-2">
                       {carAudioProducts.map((p) => (
                         <Link
                           key={p}
                           href={`/products?group=Car+Audio&category=${encodeURIComponent(p)}`}
-                          className="text-xs py-1 text-gray-600 font-semibold uppercase tracking-wide hover:text-black"
+                          className="text-sm py-1 text-gray-600 font-medium hover:text-black"
                           onClick={() => setMobileMenuOpen(false)}
                         >
                           {p}
@@ -431,15 +433,15 @@ const Navbar = () => {
                     </div>
                   </div>
                   <div>
-                    <h3 className="text-[10px] font-bold uppercase tracking-widest text-gray-400 mb-2">
+                    <h3 className="text-xs font-bold uppercase tracking-widest text-gray-400 mb-3">
                       Home Audio
                     </h3>
-                    <div className="grid grid-cols-2 gap-x-4 gap-y-1">
+                    <div className="grid grid-cols-2 gap-x-4 gap-y-2">
                       {homeAudioProducts.map((p) => (
                         <Link
                           key={p}
                           href={`/products?group=Home+Audio&category=${encodeURIComponent(p)}`}
-                          className="text-xs py-1 text-gray-600 font-semibold uppercase tracking-wide hover:text-black"
+                          className="text-sm py-1 text-gray-600 font-medium hover:text-black"
                           onClick={() => setMobileMenuOpen(false)}
                         >
                           {p}
@@ -453,7 +455,7 @@ const Navbar = () => {
 
             <Link
               href="/projects"
-              className="text-sm font-semibold tracking-wider uppercase text-gray-800 hover:text-black transition py-1"
+              className="text-base font-medium tracking-wider uppercase text-gray-800 hover:text-black transition"
               onClick={() => setMobileMenuOpen(false)}
             >
               Projects
@@ -461,7 +463,7 @@ const Navbar = () => {
 
             <Link
               href="/about"
-              className="text-sm font-semibold tracking-wider uppercase text-gray-800 hover:text-black transition py-1"
+              className="text-base font-medium tracking-wider uppercase text-gray-800 hover:text-black transition"
               onClick={() => setMobileMenuOpen(false)}
             >
               About
@@ -469,25 +471,25 @@ const Navbar = () => {
 
             <Link
               href="/contact"
-              className="text-sm font-semibold tracking-wider uppercase text-gray-800 hover:text-black transition py-1"
+              className="text-base font-medium tracking-wider uppercase text-gray-800 hover:text-black transition"
               onClick={() => setMobileMenuOpen(false)}
             >
               Contact
             </Link>
 
             {/* Admin Login */}
-            <div className="border-t border-gray-100 pt-4 mt-1">
+            <div className="border-t border-gray-100 pt-5 mt-1">
               <Link
                 href="/admin/login"
                 onClick={() => setMobileMenuOpen(false)}
-                className="flex items-center gap-2 text-sm font-semibold tracking-wider uppercase text-gray-800 hover:text-black transition py-1"
+                className="flex items-center gap-3 text-base font-medium tracking-wider uppercase text-gray-800 hover:text-black transition"
                 aria-label="Admin Login"
               >
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   viewBox="0 0 24 24"
                   fill="currentColor"
-                  className="size-4"
+                  className="size-5"
                   aria-hidden="true"
                 >
                   <path

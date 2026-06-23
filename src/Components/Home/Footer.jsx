@@ -1,8 +1,6 @@
-"use client";
-
 import Link from "next/link";
 import Image from "next/image";
-import { FaFacebookF, FaInstagram, FaXTwitter, FaYoutube } from "react-icons/fa6"; // FaXTwitter ke liye icons package update kiya
+import { FaFacebookF, FaInstagram, FaTwitter, FaYoutube } from "react-icons/fa";
 
 const Footer = () => {
   return (
@@ -16,6 +14,7 @@ const Footer = () => {
             alt="Logo"
             className="h-12 mb-4 object-contain"
           />
+
 
           <p className="text-[11px] sm:text-xs text-gray-400 leading-relaxed mb-4">
             Resonance Elite delivers premium automotive audio systems and custom fabrication services.
@@ -35,6 +34,8 @@ const Footer = () => {
               </svg>
               resonancelite@gmail.com
             </a>
+
+          
           </div>
 
           <h3 className="text-sm font-semibold mt-6 mb-3 uppercase tracking-wider">
@@ -48,9 +49,8 @@ const Footer = () => {
             <a href="https://www.instagram.com/resonance_elite" target="_blank" rel="noopener noreferrer" aria-label="Instagram" className="bg-[#E1306C] p-2 rounded-full hover:opacity-80 transition">
               <FaInstagram className="w-4 h-4 text-white" />
             </a>
-            {/* Twitter ki jagah par black bg ke sath brand new X logo custom styling setup */}
-            <a href="https://x.com/resonanceelite" target="_blank" rel="noopener noreferrer" aria-label="X (Twitter)" className="bg-[#000000] border border-gray-800 p-2 rounded-full hover:opacity-80 transition">
-              <FaXTwitter className="w-4 h-4 text-white" />
+            <a href="https://www.twitter.com/resonanceelite" target="_blank" rel="noopener noreferrer" aria-label="Twitter" className="bg-[#1DA1F2] p-2 rounded-full hover:opacity-80 transition">
+              <FaTwitter className="w-4 h-4 text-white" />
             </a>
             <a href="https://www.youtube.com/@ResonanceElite" target="_blank" rel="noopener noreferrer" aria-label="YouTube" className="bg-[#FF0000] p-2 rounded-full hover:opacity-80 transition">
               <FaYoutube className="w-4 h-4 text-white" />
