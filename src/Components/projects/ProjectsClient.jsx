@@ -8,10 +8,10 @@ const projectSections = [
   {
     title: "SQ Projects",
     subtitle: "Sound Quality Excellence",
-    desc: "Focused on Sound Quality (SQ), these projects prioritize the most accurate sound reproduction possible. We engineer high-end audio environments using premium components, ensuring every note is delivered with absolute clarity and emotional depth.",
+    desc: "Focused on Sound Quality (SQ), these projects prioritize the most accurate sound reproduction possible. We engineer High-End systems using the world’s best Equipment and components, ensuring every note is delivered with absolute clarity and emotional depth for the Audiophiles.",
     specs: [
-      "0.01% THD | Linear Response",
-      "High-Fidelity Signal Processing",
+      "STUDIO GRADE SOUND REPRODUCTION",
+      "HEAR EVERY NOTE AS INTENDED",
     ],
     images: [
       "/Images/projects/SQPROJECTS/image1.webp",
@@ -25,10 +25,10 @@ const projectSections = [
   {
     title: "SQL Projects",
     subtitle: "Sound Quality Loud",
-    desc: "Sound Quality Loud (SQL) projects bridge the gap between audiophile precision and high-volume output. These builds are designed for those who want the best of both worlds: crystal clear audio that maintains its integrity even at extreme decibel levels.",
+    desc: "Sound Quality Loud (SQL) projects bridge the gap between audiophile precision and high-volume output. These builds are designed for those who want the best of both worlds, crystal clear audio that maintains its integrity even at high volume levels.",
     specs: [
-      "130dB+ Sustained Output",
-      "High-Output Midrange Drivers",
+      "EXCEPTIONAL CLARITY, EVEN AT HIGHER VOLUMES",
+      "THE PERFECT BALANCE OF LOUDNESS AND HIGH FIDELITY",
     ],
     images: [
       "/Images/projects/SQLPROJECTS/image1.webp",
@@ -42,10 +42,10 @@ const projectSections = [
   {
     title: "SPL Projects",
     subtitle: "Sound Pressure Level",
-    desc: "Sound Pressure Level (SPL) projects are dedicated to raw power and massive bass. These builds are engineered for maximum acoustic pressure, utilizing custom enclosures and heavy-duty reinforcement to push the limits of volume.",
+    desc: "Sound Pressure Level (SPL) projects are dedicated to raw power and extreme bass. These builds are engineered for maximum acoustic pressure and bass response pushing the limits of volume to the max, these systems turn heads, do the crazy viral hairtricks and are absolute showstoppers.",
     specs: [
-      "150dB+ Peak Pressure",
-      "Custom Ported Enclosures",
+      "BUILT FOR HAIR TRICKS AND GROUND SHAKING BASS",
+      "ENGINEERED TO MOVE AIR, FLEX PANELS, AND TURN HEADS",
     ],
     images: [
       "/Images/projects/SPLPROJECTS/image1.webp",

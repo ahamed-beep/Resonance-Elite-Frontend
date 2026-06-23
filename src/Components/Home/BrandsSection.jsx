@@ -37,7 +37,10 @@ export default function BrandsSection() {
                   alt={logo.alt}
                   width={192}
                   height={64}
-                  className="h-8 sm:h-12 md:h-16 w-full object-contain"
+                  /* Mobile par zoom badha kar scale-[2.1] kar diya hai */
+                  className={`h-8 sm:h-12 md:h-16 w-full object-contain ${
+                    logo.alt === "Brax Audio" ? "scale-[2.1] md:scale-150" : ""
+                  }`}
                 />
               </div>
             ))}
