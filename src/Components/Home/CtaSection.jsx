@@ -11,10 +11,7 @@ const CtaSection = () => {
               Join The Community
             </h2>
             <p className="mt-6 text-gray-700 font-jakarta text-sm md:text-base leading-relaxed max-w-lg font-light">
-              Get a sneak preview of the latest audio innovations and new products
-              from Focal and Naim by subscribing to our exclusive newsletters.
-              Be among the first to benefit from privileged information delivered
-              straight to your inbox.
+              Resonance Elite is a league of individuals who refuse to compromise on acoustic perfection. By stepping into our world, you gain exclusive access to behind-the-scenes engineering, early private reveals of bespoke fabrications, and curated technical insights straight from our design studio.
             </p>
             <button className="mt-8 px-6 py-3 font-jakarta bg-black text-white text-xs font-semibold uppercase tracking-widest border border-black hover:bg-white hover:text-black transition duration-300 w-fit">
               Join Now
@@ -24,7 +21,7 @@ const CtaSection = () => {
           {/* RIGHT IMAGE */}
           <div className="w-full h-full">
             <img
-              src="/Images/cta.jpg"
+              src="/Images/cta.webp"
               alt="Join the community"
               className="w-full h-full object-cover block"
             />

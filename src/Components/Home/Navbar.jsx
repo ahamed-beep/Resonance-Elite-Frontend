@@ -32,6 +32,12 @@ const productImages = {
   Accessories: "/Images/home/navbar/ACCESSORIES.webp",
 };
 
+const homeAudioImages = {
+  Amplifiers: "/Images/home/navbar/HOME-AUDIO-AMPLIFIERS.webp",
+  Speakers: "/Images/home/navbar/HOME-AUDIO-SPEAKERS.webp",
+  Subwoofers: "/Images/home/navbar/HOME-AUDIO-SUBWOOFERS.webp",
+};
+
 const DEFAULT_BRAND_IMAGE = "/Images/home/navbar/brand.webp";
 const DEFAULT_PRODUCT_IMAGE = "/Images/home/navbar/product.webp";
 
@@ -43,6 +49,7 @@ const carAudioProducts = [
   "Cables & Wiring",
   "Accessories",
 ];
+
 const homeAudioProducts = ["Amplifiers", "Speakers", "Subwoofers"];
 
 const navLinkClass =
@@ -88,15 +95,12 @@ const Navbar = () => {
         .nav-font { font-family: 'Barlow', sans-serif; }
       `}</style>
 
-      {/* Header top par sticky locked hai */}
       <header role="banner" className="sticky top-0 z-50 w-full">
         <nav
           aria-label="Main navigation"
           className="nav-font w-full bg-white/95 backdrop-blur-md border-b border-gray-100 transition-all duration-300"
         >
           <div className="max-w-7xl mx-auto px-4 sm:px-6 md:px-8 h-16 flex items-center justify-between">
-
-            {/* Logo */}
             <div className="flex-shrink-0">
               <Link
                 href="/"
@@ -114,7 +118,6 @@ const Navbar = () => {
               </Link>
             </div>
 
-            {/* Desktop Nav Links */}
             <ul
               className="hidden md:flex flex-1 justify-center items-center gap-10 mt-2 list-none m-0 p-0"
               role="menubar"
@@ -125,13 +128,12 @@ const Navbar = () => {
                 </Link>
               </li>
 
-              {/* Brands */}
               <li
                 role="none"
                 onMouseEnter={() => handleEnter("brands")}
                 onMouseLeave={handleLeave}
               >
-                <div className=" mt-2 flex items-center gap-1">
+                <div className="mt-2 flex items-center gap-1">
                   <Link
                     href="/brands"
                     onClick={() => setOpenMenu(null)}
@@ -143,7 +145,6 @@ const Navbar = () => {
                 </div>
               </li>
 
-              {/* Products */}
               <li
                 role="none"
                 onMouseEnter={() => handleEnter("products")}
@@ -164,11 +165,13 @@ const Navbar = () => {
                   Projects
                 </Link>
               </li>
+
               <li role="none">
                 <Link href="/about" className={navLinkClass} role="menuitem">
                   About
                 </Link>
               </li>
+
               <li role="none">
                 <Link href="/contact" className={navLinkClass} role="menuitem">
                   Contact
@@ -176,10 +179,7 @@ const Navbar = () => {
               </li>
             </ul>
 
-            {/* Right Icons */}
             <div className="flex items-center gap-3 md:gap-5 mt-2">
-
-              {/* Admin icon */}
               <Link
                 href="/admin/login"
                 aria-label="Admin Login"
@@ -200,7 +200,6 @@ const Navbar = () => {
                 </svg>
               </Link>
 
-              {/* Hamburger */}
               <button
                 className="flex md:hidden p-1 text-gray-600 hover:text-black transition focus:outline-none"
                 onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
@@ -218,7 +217,6 @@ const Navbar = () => {
           </div>
         </nav>
 
-        {/* Desktop Brands Dropdown */}
         <div
           className={dropdownClass("brands")}
           onMouseEnter={() => handleEnter("brands")}
@@ -235,15 +233,20 @@ const Navbar = () => {
               >
                 VIEW ALL BRANDS ›
               </Link>
+
               <div className="grid grid-cols-2 gap-x-10">
                 {brands.map((col, colIdx) => (
                   <div key={colIdx}>
                     {col.map((brand) => (
                       <Link
                         key={brand}
-                        href={`/brands#${brand.toLowerCase().replace(/\s+/g, "-")}`}
+                        href={`/brands#${brand
+                          .toLowerCase()
+                          .replace(/\s+/g, "-")}`}
                         onClick={() => setOpenMenu(null)}
-                        onMouseEnter={() => setActiveBrandImage(brandImages[brand])}
+                        onMouseEnter={() =>
+                          setActiveBrandImage(brandImages[brand])
+                        }
                         onMouseLeave={() => setActiveBrandImage(null)}
                         className={dropItemClass}
                       >
@@ -254,6 +257,7 @@ const Navbar = () => {
                 ))}
               </div>
             </div>
+
             <div className="relative h-[480px] w-full overflow-hidden">
               <img
                 src={activeBrandImage || DEFAULT_BRAND_IMAGE}
@@ -264,7 +268,6 @@ const Navbar = () => {
           </div>
         </div>
 
-        {/* Desktop Products Dropdown */}
         <div
           className={dropdownClass("products")}
           onMouseEnter={() => handleEnter("products")}
@@ -279,13 +282,18 @@ const Navbar = () => {
                   <h2 className="text-[15px] font-bold uppercase tracking-[0.15em] mb-6 text-black">
                     Car Audio
                   </h2>
+
                   <div className="flex flex-col">
                     {carAudioProducts.map((product) => (
                       <Link
                         key={product}
-                        href={`/products?group=${encodeURIComponent("Car Audio")}&category=${encodeURIComponent(product)}`}
+                        href={`/products?group=${encodeURIComponent(
+                          "Car Audio"
+                        )}&category=${encodeURIComponent(product)}`}
                         onClick={() => setOpenMenu(null)}
-                        onMouseEnter={() => setActiveProductImage(productImages[product])}
+                        onMouseEnter={() =>
+                          setActiveProductImage(productImages[product])
+                        }
                         onMouseLeave={() => setActiveProductImage(null)}
                         className={dropItemClass}
                       >
@@ -294,17 +302,23 @@ const Navbar = () => {
                     ))}
                   </div>
                 </div>
+
                 <div>
                   <h2 className="text-[15px] font-bold uppercase tracking-[0.15em] mb-6 text-black">
                     Home Audio
                   </h2>
+
                   <div className="flex flex-col">
                     {homeAudioProducts.map((product) => (
                       <Link
                         key={product}
-                        href={`/products?group=${encodeURIComponent("Home Audio")}&category=${encodeURIComponent(product)}`}
+                        href={`/products?group=${encodeURIComponent(
+                          "Home Audio"
+                        )}&category=${encodeURIComponent(product)}`}
                         onClick={() => setOpenMenu(null)}
-                        onMouseEnter={() => setActiveProductImage(productImages[product])}
+                        onMouseEnter={() =>
+                          setActiveProductImage(homeAudioImages[product])
+                        }
                         onMouseLeave={() => setActiveProductImage(null)}
                         className={dropItemClass}
                       >
@@ -315,6 +329,7 @@ const Navbar = () => {
                 </div>
               </div>
             </div>
+
             <div className="relative h-[480px] w-full overflow-hidden">
               <img
                 src={activeProductImage || DEFAULT_PRODUCT_IMAGE}
@@ -325,29 +340,26 @@ const Navbar = () => {
           </div>
         </div>
 
-        {/* Mobile Menu Drawer (Fixed Layout & Height) */}
         <div
           id="mobile-menu"
-          className={`fixed left-0 right-0 top-16 bg-white z-40 border-b border-gray-200 shadow-xl transition-all duration-300 md:hidden overflow-y-auto h-auto max-h-[75vh] ${
-            mobileMenuOpen 
-              ? "opacity-100 visible translate-y-0" 
+          className={`fixed left-0 right-0 top-16 bg-white z-40 border-b border-gray-200 shadow-xl transition-all duration-300 md:hidden overflow-y-auto h-auto max-h-[82vh] ${
+            mobileMenuOpen
+              ? "opacity-100 visible translate-y-0"
               : "opacity-0 invisible -translate-y-2 pointer-events-none"
           }`}
           aria-hidden={!mobileMenuOpen}
         >
-          <div className="p-5 flex flex-col gap-5">
-
+          <div className="p-4 sm:p-5 flex flex-col gap-4">
             <Link
               href="/services"
-              className="text-sm font-semibold tracking-wider uppercase text-gray-800 hover:text-black transition py-1"
+              className="text-sm font-semibold tracking-wider uppercase text-gray-800 hover:text-black transition py-2"
               onClick={() => setMobileMenuOpen(false)}
             >
               Services
             </Link>
 
-            {/* Mobile Brands Dropdown Setup */}
             <div className="border-b border-gray-100 pb-2">
-              <div className="flex items-center justify-between py-1">
+              <div className="flex items-center justify-between py-2">
                 <Link
                   href="/brands"
                   className="text-sm font-semibold tracking-wider uppercase text-gray-800 hover:text-black transition"
@@ -355,10 +367,13 @@ const Navbar = () => {
                 >
                   Brands
                 </Link>
+
                 <button
                   className="p-1 text-gray-500 hover:text-black focus:outline-none"
                   onClick={() =>
-                    setMobileSubMenu(mobileSubMenu === "brands" ? null : "brands")
+                    setMobileSubMenu(
+                      mobileSubMenu === "brands" ? null : "brands"
+                    )
                   }
                   aria-expanded={mobileSubMenu === "brands"}
                   aria-controls="mobile-brands"
@@ -380,7 +395,9 @@ const Navbar = () => {
                   {brands.flat().map((brand) => (
                     <Link
                       key={brand}
-                      href={`/brands#${brand.toLowerCase().replace(/\s+/g, "-")}`}
+                      href={`/brands#${brand
+                        .toLowerCase()
+                        .replace(/\s+/g, "-")}`}
                       className="text-xs py-1.5 text-gray-600 font-semibold uppercase tracking-wide hover:text-black"
                       onClick={() => setMobileMenuOpen(false)}
                     >
@@ -391,12 +408,13 @@ const Navbar = () => {
               )}
             </div>
 
-            {/* Mobile Products Dropdown Setup */}
             <div className="border-b border-gray-100 pb-2">
               <button
-                className="w-full flex justify-between items-center text-sm font-semibold tracking-wider uppercase text-gray-800 focus:outline-none py-1"
+                className="w-full flex justify-between items-center text-sm font-semibold tracking-wider uppercase text-gray-800 focus:outline-none py-2"
                 onClick={() =>
-                  setMobileSubMenu(mobileSubMenu === "products" ? null : "products")
+                  setMobileSubMenu(
+                    mobileSubMenu === "products" ? null : "products"
+                  )
                 }
                 aria-expanded={mobileSubMenu === "products"}
                 aria-controls="mobile-products"
@@ -408,6 +426,7 @@ const Navbar = () => {
                   <ChevronDown className="w-4 h-4" />
                 )}
               </button>
+
               {mobileSubMenu === "products" && (
                 <div
                   id="mobile-products"
@@ -417,12 +436,15 @@ const Navbar = () => {
                     <h3 className="text-[10px] font-bold uppercase tracking-widest text-gray-400 mb-2">
                       Car Audio
                     </h3>
-                    <div className="grid grid-cols-2 gap-x-4 gap-y-1">
+
+                    <div className="grid grid-cols-2 gap-x-4 gap-y-2">
                       {carAudioProducts.map((p) => (
                         <Link
                           key={p}
-                          href={`/products?group=Car+Audio&category=${encodeURIComponent(p)}`}
-                          className="text-xs py-1 text-gray-600 font-semibold uppercase tracking-wide hover:text-black"
+                          href={`/products?group=Car+Audio&category=${encodeURIComponent(
+                            p
+                          )}`}
+                          className="text-xs py-1.5 text-gray-600 font-semibold uppercase tracking-wide hover:text-black"
                           onClick={() => setMobileMenuOpen(false)}
                         >
                           {p}
@@ -430,16 +452,20 @@ const Navbar = () => {
                       ))}
                     </div>
                   </div>
+
                   <div>
                     <h3 className="text-[10px] font-bold uppercase tracking-widest text-gray-400 mb-2">
                       Home Audio
                     </h3>
-                    <div className="grid grid-cols-2 gap-x-4 gap-y-1">
+
+                    <div className="grid grid-cols-1 min-[380px]:grid-cols-2 gap-x-4 gap-y-2">
                       {homeAudioProducts.map((p) => (
                         <Link
                           key={p}
-                          href={`/products?group=Home+Audio&category=${encodeURIComponent(p)}`}
-                          className="text-xs py-1 text-gray-600 font-semibold uppercase tracking-wide hover:text-black"
+                          href={`/products?group=Home+Audio&category=${encodeURIComponent(
+                            p
+                          )}`}
+                          className="text-xs py-1.5 text-gray-600 font-semibold uppercase tracking-wide hover:text-black"
                           onClick={() => setMobileMenuOpen(false)}
                         >
                           {p}
@@ -453,7 +479,7 @@ const Navbar = () => {
 
             <Link
               href="/projects"
-              className="text-sm font-semibold tracking-wider uppercase text-gray-800 hover:text-black transition py-1"
+              className="text-sm font-semibold tracking-wider uppercase text-gray-800 hover:text-black transition py-2"
               onClick={() => setMobileMenuOpen(false)}
             >
               Projects
@@ -461,7 +487,7 @@ const Navbar = () => {
 
             <Link
               href="/about"
-              className="text-sm font-semibold tracking-wider uppercase text-gray-800 hover:text-black transition py-1"
+              className="text-sm font-semibold tracking-wider uppercase text-gray-800 hover:text-black transition py-2"
               onClick={() => setMobileMenuOpen(false)}
             >
               About
@@ -469,13 +495,12 @@ const Navbar = () => {
 
             <Link
               href="/contact"
-              className="text-sm font-semibold tracking-wider uppercase text-gray-800 hover:text-black transition py-1"
+              className="text-sm font-semibold tracking-wider uppercase text-gray-800 hover:text-black transition py-2"
               onClick={() => setMobileMenuOpen(false)}
             >
               Contact
             </Link>
 
-            {/* Admin Login */}
             <div className="border-t border-gray-100 pt-4 mt-1">
               <Link
                 href="/admin/login"
@@ -499,7 +524,6 @@ const Navbar = () => {
                 <span>Admin</span>
               </Link>
             </div>
-
           </div>
         </div>
       </header>

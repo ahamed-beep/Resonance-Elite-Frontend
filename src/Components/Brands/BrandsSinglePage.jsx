@@ -10,7 +10,7 @@ const brandsData = [
     name: "BRAX",
     tagline: "The Reference of High-End Car Audio",
     description:
-      "Handcrafted in Germany by Audiotec Fischer, BRAX represents the absolute pinnacle of automotive high-fidelity. Every component, from power amplifiers to high-end speakers, is engineered without compromise. Utilizing gold-plated circuit boards, hand-selected components, and precision-tooled heatsinks, BRAX delivers an unparalleled sonic experience that reveals the finest details in your music. It is the first choice for audiophiles who demand the most natural and powerful sound reproduction possible in a vehicle environment.",
+      "BRAX represents the pinnacle of German high-end car audio, driven by a passion for reproducing music with absolute realism and emotional impact. Since 1990, Audiotec Fischer has developed and handcrafted BRAX components in Germany, using only the finest materials and uncompromising quality standards. Every product is custom-made, with manually selected and meticulously matched components—including power transistors classified into over 300 categories using proprietary measuring technology—to ensure unmatched performance, homogeneity, and sound quality. For BRAX, “Made in Germany” is not just a label, but a promise of perfection, precision, and an uncompromising pursuit of the ultimate in-car listening experience.",
     image: "/Images/brands/BRAX.webp",
   },
   {
@@ -18,7 +18,7 @@ const brandsData = [
     name: "BLAM",
     tagline: "Experience the Signature 'French Sound'",
     description:
-      "Driven by the philosophy of 'French Sound,' BLAM (Bonneville Laboratory And Acoustic Musical) focuses on the emotional impact of music. With over 25 years of experience in high-end speaker design, founder Guy Bonneville creates systems that emphasize mid-range clarity and vocal warmth. Their Signature and Live series utilize high-quality materials like carbon fiber and silk domes to reproduce the nuance of a live performance, making them ideal for listeners who appreciate jazz, classical, and acoustic genres.",
+      "Born in 2013 from the singular vision of Guy Bonneville, a master loudspeaker designer with decades behind the craft, BLAM exists for one purpose: to give discerning ears an uncompromising sound of their own. Engineered and hand-developed in Saint-Étienne, France, BLAM is defined by its signature French Sound — an exquisite balance of warmth, vocal purity, and natural depth that elevates every note inside the cabin. From precision-tuned upgrades to flagship audiophile component systems, BLAM doesn't just reproduce music — it distills Bonneville's lifelong pursuit of sonic perfection into every detail.",
     image: "/Images/brands/BLAM.webp",
   },
   {
@@ -26,7 +26,7 @@ const brandsData = [
     name: "MOREL",
     tagline: "Mastering the Art of Speaker Technology",
     description:
-      "Since 1975, Morel has been at the forefront of acoustic innovation. Known for their unique Hexatech voice coils and Acuflex hand-coated silk dome tweeters, Morel speakers deliver a smooth, non-fatiguing sound that is legendary in the car audio industry. From the entry-level Maximo to the flagship Supremo series, Morel integrates advanced aerodynamics and neodymium magnets to ensure every driver performs with precision, even in the challenging acoustic spaces of modern car interiors.",
+      "For over 50 years, MOREL has been at the forefront of high-end audio innovation, earning a reputation for developing some of the world’s most technologically advanced loudspeaker technologies. Under the leadership of Meir Mordechai, the company has pioneered numerous breakthroughs in speaker design, combining proprietary engineering, in-house manufacturing, and meticulous craftsmanship to achieve exceptional sound quality. Every MOREL speaker is designed to deliver remarkable accuracy, musicality, and emotional impact, reflecting the brand’s unwavering commitment to acoustic excellence and innovation. With five decades of expertise, MOREL continues to set the benchmark for premium audio performance worldwide.",
     image: "/Images/brands/MOREL.webp",
   },
   {
@@ -34,7 +34,7 @@ const brandsData = [
     name: "GLADEN",
     tagline: "German Engineering & Performance Excellence",
     description:
-      "Gladen Audio combines aerospace-grade materials with traditional German craftsmanship to create high-performance car audio solutions. Their philosophy is centered on technical perfection; whether it's their line of high-efficiency subwoofers or their award-winning speaker components. Gladen products are designed to withstand the rigors of automotive use while providing a linear frequency response and high power handling, ensuring that your audio system stays crystal clear at any volume level.",
+      "Founded in 1997 by Henning Gladen, an aerospace engineer turned audio perfectionist, GLADEN was built on a singular obsession: applying the precision of aerospace engineering to the pursuit of perfect sound. FEM analysis, aerodynamics, and elastostatics — tools more at home in an aircraft design studio — are engineered into every driver basket and enclosure, hand-built by specialists in the Swabian region of Germany. The result is the Aerospace series and beyond: speakers and subwoofers crafted not just to play music, but to perform under the same exacting tolerances as the industries that inspired them.",
     image: "/Images/brands/GLADEN.webp",
   },
   {
@@ -42,7 +42,7 @@ const brandsData = [
     name: "HELIX",
     tagline: "The Global Leader in Digital Signal Processing",
     description:
-      "Helix has redefined the modern car audio landscape through its world-class Digital Signal Processors (DSP) and intelligent amplifiers. As modern factory radios become harder to replace, Helix offers the technology to integrate seamlessly with OEM systems while providing professional-grade tuning capabilities. With features like Real-Time Analyzers (RTA) and Virtual Channel Processing, Helix allows enthusiasts to correct time-alignment and equalization, transforming a standard car cabin into a world-class concert hall.",
+      "Born from the same German engineering house as BRAX, HELIX carries that same reference-level pedigree — but with a sharper focus: making true high-end sound work seamlessly inside the modern vehicle. Designed and built in Germany with premium materials and decades of acoustic expertise, HELIX systems integrate via patented FlexMount and FlexConnect solutions, engineered for fast, precise, fully reversible installation in today's OEM architectures. The result is sound quality that doesn't compromise for the sake of integration — and integration that doesn't compromise for the sake of sound.",
     image: "/Images/brands/HELIX.webp",
   },
   {
@@ -50,7 +50,7 @@ const brandsData = [
     name: "MOSCONI",
     tagline: "Italian Design Meets High-End Performance",
     description:
-      "Mosconi amplifiers and processors are a testament to Italian elegance and power. Merging aesthetic beauty with raw performance, Mosconi Gladen units are designed to deliver massive power without sacrificing sound quality. Their amplifiers are celebrated for their 'Class AB' warmth and control, providing a sophisticated sound stage and incredible dynamic range. For those who want their audio equipment to look as good as it sounds, Mosconi is the ultimate statement in boutique automotive electronics.",
+      "Founded in 2008 by Ivan Mosconi, the brand was built on a singular passion: marrying decades of professional audio engineering with an unmistakably Italian sound — round in the highs, smooth through the vocal range, and powerful in the bass. Often called the Ferrari of amplifiers, Mosconi designs and manufactures every product entirely in-house, in their own factory in Italy — the only car-audio brand in the country to do so. That same obsession with control, precision, and performance defines a modular architecture that isolates signal circuitry from power electronics, eliminating interference and unlocking pure, uncolored output. It's a philosophy with no shortcuts: world-class amplification, engineered without compromise, for listeners who hear the difference.",
     image: "/Images/brands/MOSCONI.webp",
   },
   {
@@ -58,7 +58,7 @@ const brandsData = [
     name: "MATCH",
     tagline: "Premium Plug & Play Audio Upgrades",
     description:
-      "Match by Audiotec Fischer provides the perfect solution for upgrading your vehicle's audio without modifying the interior. Specializing in 'Plug & Play' DSP amplifiers and vehicle-specific speakers, Match allows for a significant boost in power and clarity using the factory wiring. This makes it the premier choice for leased vehicles or modern luxury cars where maintaining the original factory look is essential, all while gaining professional-grade sound processing power.",
+      "Born from the same German engineering house as BRAX and HELIX, MATCH was created to solve a different problem: how to deliver true high-end sound without touching a single wire of the factory system. Every MATCH amplifier is true plug & play — installing alongside the original radio and speakers, and removable without a trace if the car is ever sold or returned. Built in Germany with the same DSP technology and sonic DNA inherited from BRAX and HELIX, MATCH proves that effortless installation and uncompromising sound were never meant to be a trade-off.",
     image: "/Images/brands/MATCH.webp",
   },
   {
@@ -66,7 +66,7 @@ const brandsData = [
     name: "DD AUDIO",
     tagline: "Engineered for Extreme Sound Pressure",
     description:
-      "DD Audio (Digital Designs) is synonymous with extreme bass and rugged durability. Based in the USA, they have spent decades perfecting the art of high-excursion subwoofers and high-output amplifiers. Built to 'True to the Source' standards, DD Audio products aren't just for competition-level SPL (Sound Pressure Level) vehicles; they are designed for anyone who wants deep, tactile bass that you can feel in your chest. Their hand-built subwoofers set the industry standard for performance and longevity.",
+      "Founded in 1986 by Jassa and Vicki Langford as Digital Designs, DD Audio has earned its reputation as the world's best SPL car audio brand — built in competition and dB drag battles, setting world records where raw output and engineering had nowhere to hide. Hand-built at their Oklahoma City headquarters, DD Audio products are engineered for one purpose — to perform under the most extreme conditions and keep performing, year after year. From record-setting subwoofers to amplifiers built for serious power, DD Audio's philosophy is simple and uncompromising: Built to Perform.",
     image: "/Images/brands/DDAUDIO.webp",
   },
   {
@@ -74,7 +74,7 @@ const brandsData = [
     name: "DB DRIVE",
     tagline: "Unleashing the Power of Sound",
     description:
-      "DB Drive is dedicated to the 'Loud and Clear' lifestyle. Their extensive range of subwoofers, mid-ranges, and high-compression drivers are designed for high-energy audio systems that demand attention. Whether you are building a 'Pro Audio' style system or a high-performance daily driver, DB Drive provides the heavy-duty components needed to cut through road noise. Their Euphoria line specifically targets the SQ (Sound Quality) market, offering a balanced, refined alternative to their high-output series.",
+      "Born over 30 years ago in South Texas out of dB Research's passion for audio, DB Drive has grown into a global force in car audio — distributed across more than 32 countries and proven on the competition floor through IASCA and beyond. Built for drivers who demand power, precision, and unmatched sound quality, DB Drive's lineup spans everything from sound-quality-focused systems to no-compromise, competition-level output. From street builds to record-chasing demo cars, DB Drive's mission stays the same: drive it louder.",
     image: "/Images/brands/DBDRIVE.webp",
   },
   {
@@ -82,7 +82,7 @@ const brandsData = [
     name: "DB LINK",
     tagline: "Professional Connection & Power Management",
     description:
-      "A high-end audio system is only as good as its connections. DB Link provides the critical infrastructure required for peak performance, including oxygen-free copper (OFC) wiring, high-conductivity distribution blocks, and advanced sound dampening materials. By ensuring maximum current flow and minimizing electrical resistance, DB Link accessories allow your amplifiers and speakers to reach their full potential, preventing voltage drops and ensuring a noise-free audio environment.",
+      "Born from the same dB Research family as DB Drive, DB Link is the connection behind every great audio system — the cables, wiring, and installation accessories engineered to deliver reliable power and pure signal integrity. From high-strand, oxygen-free copper cable to fuses, RCA connections, and complete amp-wiring kits, every DB Link product is built to handle serious current without compromise. Because a system is only as powerful as the wire that feeds it — and DB Link makes sure nothing gets lost along the way.",
     image: "/Images/brands/DBLINK.webp",
   },
 ];

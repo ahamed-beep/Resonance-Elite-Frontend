@@ -100,8 +100,8 @@ const Footer = () => {
           </p>
           <p className="text-gray-400 text-center md:text-right">
             Developed by{" "}
-            <a href="https://www.xelite.co" target="_blank" rel="noopener noreferrer" className="text-white font-semibold hover:underline transition">
-              XElite
+            <a href="https://wisedesk.agency" target="_blank" rel="noopener noreferrer" className="text-white font-semibold hover:underline transition">
+              WiseDesk Agency
             </a>
           </p>
         </div>
