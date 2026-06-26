@@ -6,7 +6,7 @@ const services = [
     subtitle: "Competition-Grade DSP Calibration",
     description:
       "We deliver studio-grade digital signal processing using advanced binaural microphones calibrated to human hearing. By analysis of real-time cabin reflections through 3D Vectoring Graphs, we masterfully correct phase variations, time alignment, and frequencies to unlock uncompromised acoustic fidelity.",
-    img: "/Images/home/services/TUNING1.jpeg",
+    img: "/Images/home/services/TUNING1.webp",
     reverse: false,
   },
   {

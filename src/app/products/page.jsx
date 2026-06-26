@@ -96,7 +96,7 @@ export default async function ProductsPage() {
                 Premium Audio
               </h1>
               <p className="text-zinc-300 text-xs sm:text-sm md:text-base mt-1.5 max-w-md mx-auto font-light">
-                Experience signature sound mechanics
+                Explore high-performance speakers, amplifiers, subwoofers, and digital signal processors engineered to deliver unmatched sound quality
               </p>
             </div>
           </div>

@@ -17,7 +17,7 @@ const HeroSection = () => {
         playsInline
         poster="/images/hero-poster.png"
       >
-        <source src="https://res.cloudinary.com/dwkv8fry2/video/upload/v1782207397/hero_dramq2.mp4" type="video/webm" />
+        <source src="https://res.cloudinary.com/dwkv8fry2/video/upload/v1782434366/1782307909885740_k88pw8.webm" type="video/webm" />
         <source src="https://res.cloudinary.com/ddhxxqkpc/video/upload/v1781668652/Video_yc69yf.mp4" type="video/mp4" />
         Your browser does not support the video tag.
       </video>

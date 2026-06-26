@@ -1,7 +1,6 @@
 import Footer from "@/Components/Home/Footer";
 import Navbar from "@/Components/Home/Navbar";
 import ProjectsClient from "@/Components/projects/ProjectsClient";
-import Image from "next/image";
 
 export const metadata = {
   title: "Our Projects | Resonance Elite",
@@ -82,41 +81,55 @@ const projectsJsonLd = {
   ],
 };
 
-export default function ProjectsPage() {
+export default function ProjectsPage({ searchParams }) {
+  const category = searchParams?.category || "";
+
   return (
     <>
       <script
         type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(projectsJsonLd) }}
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(projectsJsonLd),
+        }}
       />
-<Navbar/>
-      <main className="w-full bg-white text-zinc-900 overflow-x-hidden selection:bg-zinc-950 selection:text-white antialiased">
 
+      <Navbar />
+
+      <main className="w-full bg-white text-zinc-900 overflow-x-hidden selection:bg-zinc-950 selection:text-white antialiased">
         {/* HERO SECTION */}
         <section
           aria-label="Projects showcase hero"
           className="relative w-full h-[35vh] sm:h-[45vh] md:h-[55vh] overflow-hidden bg-zinc-950"
         >
-            <img
-          src="/Images/about/hero.webp"
-          alt="Resonance Elite about us"
-          className="w-full h-full object-cover opacity-60"
-          loading="eager"
-        />
-          <div className="absolute inset-0 bg-gradient-to-t from-zinc-950/30 to-transparent" aria-hidden="true" />
+          <img
+            src="/Images/about/hero.webp"
+            alt="Resonance Elite Projects"
+            className="w-full h-full object-cover opacity-60"
+            loading="eager"
+          />
+
+          <div
+            className="absolute inset-0 bg-gradient-to-t from-zinc-950/30 to-transparent"
+            aria-hidden="true"
+          />
+
           <div className="absolute inset-0 flex flex-col items-center justify-center text-center px-4">
             <h1 className="text-white text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-light tracking-widest uppercase">
               Our Projects
             </h1>
-            <div className="w-8 h-[1px] bg-white/30 mt-4 md:mt-5" aria-hidden="true"></div>
+
+            <div
+              className="w-8 h-[1px] bg-white/30 mt-4 md:mt-5"
+              aria-hidden="true"
+            />
           </div>
         </section>
 
-        {/* PROJECTS — Client Component handles interactivity */}
-        <ProjectsClient />
-
+        {/* PROJECTS */}
+        <ProjectsClient initialCategory={category} />
       </main>
-      <Footer/>
+
+      <Footer />
     </>
   );
 }
