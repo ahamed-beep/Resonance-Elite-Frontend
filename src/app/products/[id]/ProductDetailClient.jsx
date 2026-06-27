@@ -18,10 +18,10 @@ export default function ProductDetailClient({ product, relatedProducts }) {
   const handleWhatsApp = () => {
     const qtyString = quantity > 1 ? ` (Quantity: ${quantity})` : "";
     const message = `Salam, I am interested in purchasing "${product.name}"${qtyString} [SKU: ${product.sku}]. Please let me know the availability status.`;
-    window.open(
-      `https://wa.me/923214334425?text=${encodeURIComponent(message)}`,
-      "_blank"
-    );
+ window.open(
+  `https://wa.me/923003139039?text=${encodeURIComponent(message)}`,
+  "_blank"
+);
   };
 
   return (
