@@ -98,7 +98,7 @@ export default function ServicesClient() {
   };
 
   return (
-    <div className="w-full bg-white text-zinc-900 overflow-x-hidden">
+    <div className="w-full bg-white text-zinc-900 ">
       <Navbar />
 
       {/* Hero */}
