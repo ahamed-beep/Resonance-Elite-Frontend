@@ -71,13 +71,24 @@ export default function BrandsPage() {
     <>
       <script
         type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(brandsJsonLd) }}
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(brandsJsonLd),
+        }}
       />
-      <Navbar />
-      <Suspense fallback={<div className="min-h-screen bg-white" />}>
-        <BrandsSinglePage />
-      </Suspense>
-      <Footer />
+
+      <main className="w-full min-h-screen overflow-x-hidden bg-white text-zinc-900 antialiased">
+        <Navbar />
+
+        <Suspense
+          fallback={
+            <div className="w-full min-h-screen bg-white" />
+          }
+        >
+          <BrandsSinglePage />
+        </Suspense>
+
+        <Footer />
+      </main>
     </>
   );
 }

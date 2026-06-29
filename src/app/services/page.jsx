@@ -72,15 +72,61 @@ const servicesJsonLd = {
     "@type": "OfferCatalog",
     name: "Car Audio Services",
     itemListElement: [
-      { "@type": "Offer", itemOffered: { "@type": "Service", name: "System Consultation" } },
-      { "@type": "Offer", itemOffered: { "@type": "Service", name: "System Tuning" } },
-      { "@type": "Offer", itemOffered: { "@type": "Service", name: "A-Pillar Craftsmanship" } },
-      { "@type": "Offer", itemOffered: { "@type": "Service", name: "Custom Amp Rack & CAD Designing" } },
-      { "@type": "Offer", itemOffered: { "@type": "Service", name: "Custom Subwoofer Enclosures" } },
-      { "@type": "Offer", itemOffered: { "@type": "Service", name: "Soundproofing" } },
+      {
+        "@type": "Offer",
+        itemOffered: {
+          "@type": "Service",
+          name: "System Consultation",
+        },
+      },
+      {
+        "@type": "Offer",
+        itemOffered: {
+          "@type": "Service",
+          name: "System Tuning",
+        },
+      },
+      {
+        "@type": "Offer",
+        itemOffered: {
+          "@type": "Service",
+          name: "A-Pillar Craftsmanship",
+        },
+      },
+      {
+        "@type": "Offer",
+        itemOffered: {
+          "@type": "Service",
+          name: "Custom Amp Rack & CAD Designing",
+        },
+      },
+      {
+        "@type": "Offer",
+        itemOffered: {
+          "@type": "Service",
+          name: "Custom Subwoofer Enclosures",
+        },
+      },
+      {
+        "@type": "Offer",
+        itemOffered: {
+          "@type": "Service",
+          name: "Soundproofing",
+        },
+      },
     ],
   },
 };
+
+function ServicesPageFallback() {
+  return (
+    <main className="min-h-screen w-full bg-white px-4 sm:px-6 md:px-10 lg:px-16 min-[1920px]:px-24 min-[2560px]:px-32">
+      <div className="mx-auto flex min-h-screen w-full max-w-7xl min-[1920px]:max-w-[1600px] min-[2560px]:max-w-[2100px] items-center justify-center">
+        <div className="h-8 w-8 rounded-full border border-zinc-200 border-t-zinc-900 animate-spin" />
+      </div>
+    </main>
+  );
+}
 
 export default function ServicesPage() {
   return (
@@ -89,7 +135,8 @@ export default function ServicesPage() {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(servicesJsonLd) }}
       />
-      <Suspense fallback={<div className="min-h-screen bg-white" />}>
+
+      <Suspense fallback={<ServicesPageFallback />}>
         <ServicesClient />
       </Suspense>
     </>

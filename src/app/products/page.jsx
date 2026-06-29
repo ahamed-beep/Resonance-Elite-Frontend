@@ -36,7 +36,7 @@ export const metadata = {
       },
     ],
     type: "website",
-  },
+  }, // FIX: Yahan brackets ka syntax bilkul exact set kar diya hai
   twitter: {
     card: "summary_large_image",
     title: "Premium Car & Home Audio Products | Resonance Elite",
@@ -54,6 +54,15 @@ export const metadata = {
     follow: true,
   },
 };
+
+// Loading placeholder component for clean architecture
+function ProductsLoader() {
+  return (
+    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+      <div className="w-full h-96 bg-zinc-50 animate-pulse rounded-sm border border-zinc-100" />
+    </div>
+  );
+}
 
 export default async function ProductsPage() {
   const products = await getProducts();
@@ -79,8 +88,11 @@ export default async function ProductsPage() {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(productsJsonLd) }}
       />
+      
       <Navbar />
+      
       <div className="min-h-screen bg-white text-black antialiased">
+        {/* Hero Section Banner */}
         <div className="relative w-full h-36 sm:h-48 md:h-60 lg:h-72 overflow-hidden bg-zinc-950">
           <Image
             src="https://images.unsplash.com/photo-1545454675-3531b543be5d?q=80&w=2070&auto=format&fit=crop"
@@ -101,7 +113,9 @@ export default async function ProductsPage() {
             </div>
           </div>
         </div>
-        <Suspense fallback={<div className="min-h-screen bg-white" />}>
+
+        {/* Suspense Wraps the Client Component to safely read search queries */}
+        <Suspense fallback={<ProductsLoader />}>
           <ProductsClient
             initialProducts={products}
             brands={brands}
@@ -109,6 +123,7 @@ export default async function ProductsPage() {
           />
         </Suspense>
       </div>
+
       <Footer />
     </>
   );
