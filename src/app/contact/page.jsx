@@ -183,14 +183,14 @@ export default function ContactPage() {
               <p className="text-[11px] sm:text-xs md:text-sm text-zinc-500 leading-relaxed">
                 By clicking SUBMIT, I agree to the{" "}
                 <a
-                  href="/privacy"
+                  href="/privacy-policy"
                   className="text-zinc-900 font-medium underline hover:text-zinc-600 transition-colors"
                 >
                   Privacy Policy
                 </a>{" "}
                 and{" "}
                 <a
-                  href="/terms"
+                  href="/terms-and-conditions"
                   className="text-zinc-900 font-medium underline hover:text-zinc-600 transition-colors"
                 >
                   Terms of Use
