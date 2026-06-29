@@ -99,25 +99,31 @@ export default function ServicesClient() {
 
   return (
     <div className="w-full bg-white text-zinc-900 overflow-x-hidden">
-<Navbar/>
+      <Navbar />
+
       {/* Hero */}
-      <div className="relative w-full h-[40vh] sm:h-[50vh] md:h-[60vh] overflow-hidden bg-zinc-950">
+      <section className="relative w-full h-[42vh] min-h-[280px] sm:h-[50vh] md:h-[58vh] lg:h-[65vh] min-[1920px]:h-[70vh] min-[2560px]:h-[72vh] overflow-hidden bg-zinc-950">
         <img
           src="/Images/about/hero.webp"
-          alt="Resonance Elite about us"
-          className="w-full h-full object-cover opacity-60"
+          alt="Resonance Elite services"
+          className="w-full h-full object-cover object-center opacity-60"
           loading="eager"
         />
+
         <div className="absolute inset-0 flex flex-col items-center justify-center text-center px-4 bg-black/10">
-          <h1 className="text-white text-2xl sm:text-3xl md:text-5xl font-light tracking-tight uppercase">
+          <h1 className="text-white text-2xl sm:text-3xl md:text-5xl lg:text-6xl min-[1920px]:text-7xl min-[2560px]:text-8xl font-light tracking-tight uppercase">
             Our Services
           </h1>
-          <div className="w-12 h-[1px] bg-white/40 mt-3 md:mt-4" aria-hidden="true" />
+
+          <div
+            className="w-12 md:w-16 min-[1920px]:w-20 h-[1px] bg-white/40 mt-3 md:mt-5"
+            aria-hidden="true"
+          />
         </div>
-      </div>
+      </section>
 
       {/* Services Sections */}
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 md:px-10 py-12 md:py-16 space-y-16 md:space-y-32">
+      <main className="max-w-7xl min-[1920px]:max-w-[1600px] min-[2560px]:max-w-[2100px] min-[3200px]:max-w-[2600px] mx-auto px-4 sm:px-6 md:px-10 min-[1920px]:px-16 min-[2560px]:px-20 py-12 md:py-16 lg:py-20 min-[1920px]:py-28 min-[2560px]:py-36 space-y-16 md:space-y-24 lg:space-y-32 min-[1920px]:space-y-40 min-[2560px]:space-y-52">
         {servicesData.map((service, sectionIdx) => {
           const isEven = sectionIdx % 2 === 0;
           const currentActiveIdx = activeIndices[sectionIdx];
@@ -127,25 +133,25 @@ export default function ServicesClient() {
               key={sectionIdx}
               aria-label={service.title}
               className={`flex flex-col ${
-                isEven ? "md:flex-row" : "md:flex-row-reverse"
-              } items-center gap-6 sm:gap-8 md:gap-16`}
+                isEven ? "lg:flex-row" : "lg:flex-row-reverse"
+              } items-center gap-8 sm:gap-10 md:gap-12 lg:gap-16 min-[1920px]:gap-24 min-[2560px]:gap-32`}
             >
               {/* Image Gallery */}
-              <div className="w-full md:w-1/2 space-y-3 md:space-y-4">
-                <div className="w-full aspect-[4/3] max-h-[260px] sm:max-h-[340px] md:max-h-none md:h-[400px] overflow-hidden bg-zinc-50 border border-zinc-100 rounded-sm relative">
+              <div className="w-full lg:w-1/2 space-y-3 md:space-y-4 min-[1920px]:space-y-6">
+                <div className="relative w-full aspect-[4/3] bg-zinc-50 border border-zinc-100 rounded-sm overflow-hidden flex items-center justify-center">
                   <Image
                     src={service.images[currentActiveIdx]}
                     alt={`${service.title} — ${service.subtitle}`}
                     fill
-                    sizes="(max-width: 768px) 100vw, 50vw"
-                    loading={sectionIdx === 0 ? "eager" : "lazy"}
-                    className="object-cover transition-all duration-500"
+                    sizes="(max-width: 1024px) 100vw, 50vw"
+                    priority={sectionIdx === 0}
+                    className="object-contain object-center transition-all duration-500"
                   />
                 </div>
 
                 {/* Thumbnails */}
                 <div
-                  className="flex gap-2 overflow-x-auto pb-1.5 pt-0.5 [-webkit-overflow-scrolling:touch] scrollbar-thin"
+                  className="flex gap-2 sm:gap-3 min-[1920px]:gap-4 overflow-x-auto pb-2 pt-1 [-webkit-overflow-scrolling:touch]"
                   role="group"
                   aria-label={`${service.title} image thumbnails`}
                 >
@@ -156,7 +162,7 @@ export default function ServicesClient() {
                       onClick={() => handleStateChange(sectionIdx, imgIdx)}
                       aria-label={`View ${service.title} image ${imgIdx + 1}`}
                       aria-pressed={currentActiveIdx === imgIdx}
-                      className={`relative w-14 h-10 sm:w-20 sm:h-14 flex-shrink-0 overflow-hidden border transition-all duration-300 rounded-sm cursor-pointer ${
+                      className={`relative w-16 h-11 sm:w-20 sm:h-14 md:w-24 md:h-16 min-[1920px]:w-32 min-[1920px]:h-20 min-[2560px]:w-40 min-[2560px]:h-24 flex-shrink-0 overflow-hidden border transition-all duration-300 rounded-sm cursor-pointer ${
                         currentActiveIdx === imgIdx
                           ? "border-black scale-95"
                           : "border-zinc-200 hover:border-zinc-400"
@@ -166,9 +172,9 @@ export default function ServicesClient() {
                         src={img}
                         alt={`${service.title} thumbnail ${imgIdx + 1}`}
                         fill
-                        sizes="80px"
+                        sizes="160px"
                         loading="lazy"
-                        className="object-cover"
+                        className="object-cover object-center"
                       />
                     </button>
                   ))}
@@ -176,20 +182,23 @@ export default function ServicesClient() {
               </div>
 
               {/* Content */}
-              <div className="w-full md:w-1/2 flex flex-col justify-center text-left px-1 sm:px-2 md:px-0">
-                <h2 className="text-xl md:text-3xl font-light text-zinc-950 tracking-tight">
+              <div className="w-full lg:w-1/2 flex flex-col justify-center text-left px-1 sm:px-2 lg:px-0">
+                <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl min-[1920px]:text-5xl min-[2560px]:text-6xl font-light text-zinc-950 tracking-tight leading-tight">
                   {service.title}
                 </h2>
-                <p className="mt-1.5 md:mt-2 text-[10px] md:text-sm font-medium tracking-wider uppercase text-zinc-400">
+
+                <p className="mt-2 md:mt-3 text-[10px] sm:text-xs md:text-sm min-[1920px]:text-base min-[2560px]:text-xl font-medium tracking-[0.18em] uppercase text-zinc-400 leading-snug">
                   {service.subtitle}
                 </p>
-                <p className="mt-3 md:mt-5 text-zinc-500 leading-relaxed text-xs sm:text-sm md:text-base font-light max-w-xl">
+
+                <p className="mt-4 md:mt-5 min-[1920px]:mt-7 text-zinc-500 leading-relaxed text-sm md:text-base min-[1920px]:text-lg min-[2560px]:text-2xl font-light max-w-xl min-[1920px]:max-w-2xl min-[2560px]:max-w-4xl">
                   {service.desc}
                 </p>
-                <div className="pt-1 md:pt-2">
+
+                <div className="pt-2 md:pt-3 min-[1920px]:pt-5">
                   <Link
                     href="/contact"
-                    className="inline-block w-full sm:w-auto mt-4 md:mt-6 px-6 py-2.5 border border-black text-black text-xs font-semibold uppercase tracking-widest hover:bg-black hover:text-white transition duration-300 text-center"
+                    className="inline-flex items-center justify-center w-full sm:w-auto mt-4 md:mt-6 min-[1920px]:mt-8 px-6 md:px-7 min-[1920px]:px-10 min-[2560px]:px-14 py-2.5 md:py-3 min-[1920px]:py-4 min-[2560px]:py-6 border border-black text-black text-xs md:text-sm min-[1920px]:text-base min-[2560px]:text-xl font-semibold uppercase tracking-widest hover:bg-black hover:text-white transition duration-300 text-center"
                     aria-label={`Book a consultation for ${service.title}`}
                   >
                     Book Consultation
@@ -199,8 +208,9 @@ export default function ServicesClient() {
             </section>
           );
         })}
-      </div>
-      <Footer/>
+      </main>
+
+      <Footer />
     </div>
   );
 }

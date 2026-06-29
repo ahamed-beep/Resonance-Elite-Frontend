@@ -18,7 +18,7 @@ export default function ContactsSection() {
     setLoading(true);
     try {
       const res = await api.get("/contacts");
-      setContacts(res.data);
+      setContacts(res.data || []);
     } catch {
       setContacts([]);
     } finally {
@@ -26,23 +26,39 @@ export default function ContactsSection() {
     }
   };
 
+  // Jab message open ho ya click ho tab trigger hoga
   const handleMarkRead = async (id) => {
     try {
       await api.patch(`/contacts/${id}/read`);
       setContacts((prev) =>
         prev.map((c) => (c.id === id ? { ...c, status: "read" } : c))
       );
-      if (selected?.id === id) setSelected((p) => ({ ...p, status: "read" }));
-    } catch {}
+      if (selected?.id === id) {
+        setSelected((prev) => (prev ? { ...prev, status: "read" } : null));
+      }
+    } catch (err) {
+      console.error("Failed to mark as read:", err);
+    }
+  };
+
+  // Row click par auto-read logic integrated
+  const handleRowClick = (contact) => {
+    setSelected(contact);
+    if (contact.status === "unread") {
+      handleMarkRead(contact.id);
+    }
   };
 
   const handleDelete = async (id) => {
     try {
       await api.delete(`/contacts/${id}`);
+      // Optimistic state update: Bina reload kiye instant delete
+      setContacts((prev) => prev.filter((c) => c.id !== id));
       setDeleteId(null);
       if (selected?.id === id) setSelected(null);
-      fetchContacts();
-    } catch {}
+    } catch (err) {
+      console.error("Failed to delete contact:", err);
+    }
   };
 
   const unreadCount = contacts.filter((c) => c.status === "unread").length;
@@ -90,7 +106,7 @@ export default function ContactsSection() {
                 <tr
                   key={c.id}
                   className="border-b border-zinc-800/50 hover:bg-zinc-800/30 transition cursor-pointer"
-                  onClick={() => setSelected(c)}
+                  onClick={() => handleRowClick(c)}
                 >
                   <td className="px-4 py-3">
                     <div className="flex items-center gap-2">
@@ -105,7 +121,7 @@ export default function ContactsSection() {
                   <td className="px-4 py-3 text-zinc-400 hidden md:table-cell">{c.email}</td>
                   <td className="px-4 py-3 text-zinc-400 hidden lg:table-cell">{c.phone || "-"}</td>
                   <td className="px-4 py-3">
-                    <span className={`px-2 py-1 rounded-sm text-[10px] font-bold tracking-wider uppercase ${
+                    <span className={`px-2 py-0.5 rounded-sm text-[10px] font-bold tracking-wider uppercase ${
                       c.status === "unread"
                         ? "bg-emerald-900/50 text-emerald-400"
                         : "bg-zinc-800 text-zinc-500"
@@ -114,7 +130,7 @@ export default function ContactsSection() {
                     </span>
                   </td>
                   <td className="px-4 py-3 text-zinc-500 hidden lg:table-cell">
-                    {new Date(c.created_at).toLocaleDateString("en-GB")}
+                    {c.created_at ? new Date(c.created_at).toLocaleDateString("en-GB") : "-"}
                   </td>
                   <td className="px-4 py-3">
                     <div
@@ -149,11 +165,11 @@ export default function ContactsSection() {
       {/* Detail Modal */}
       {selected && (
         <div className="fixed inset-0 z-50 flex items-center justify-center px-4">
-          <div className="absolute inset-0 bg-black/70" onClick={() => setSelected(null)} />
-          <div className="relative bg-zinc-900 border border-zinc-800 rounded-sm w-full max-w-lg">
+          <div className="absolute inset-0 bg-black/70 backdrop-blur-xs" onClick={() => setSelected(null)} />
+          <div className="relative bg-zinc-900 border border-zinc-800 rounded-sm w-full max-w-lg overflow-hidden">
             <div className="flex items-center justify-between px-6 py-4 border-b border-zinc-800">
               <h3 className="text-white text-xs font-bold tracking-[3px] uppercase">Message Detail</h3>
-              <button onClick={() => setSelected(null)} className="text-zinc-400 hover:text-white text-lg leading-none">✕</button>
+              <button onClick={() => setSelected(null)} className="text-zinc-400 hover:text-white text-base leading-none">✕</button>
             </div>
             <div className="px-6 py-5 space-y-4">
               <div className="grid grid-cols-2 gap-4">
@@ -163,7 +179,7 @@ export default function ContactsSection() {
                 </div>
                 <div>
                   <p className="text-[10px] tracking-[3px] uppercase text-zinc-500 mb-1">Status</p>
-                  <span className={`px-2 py-1 rounded-sm text-[10px] font-bold tracking-wider uppercase ${
+                  <span className={`px-2 py-0.5 rounded-sm text-[10px] font-bold tracking-wider uppercase ${
                     selected.status === "unread"
                       ? "bg-emerald-900/50 text-emerald-400"
                       : "bg-zinc-800 text-zinc-500"
@@ -173,7 +189,7 @@ export default function ContactsSection() {
                 </div>
                 <div>
                   <p className="text-[10px] tracking-[3px] uppercase text-zinc-500 mb-1">Email</p>
-                  <p className="text-zinc-300 text-sm">{selected.email}</p>
+                  <p className="text-zinc-300 text-sm select-all">{selected.email}</p>
                 </div>
                 <div>
                   <p className="text-[10px] tracking-[3px] uppercase text-zinc-500 mb-1">Phone</p>
@@ -181,7 +197,9 @@ export default function ContactsSection() {
                 </div>
                 <div>
                   <p className="text-[10px] tracking-[3px] uppercase text-zinc-500 mb-1">Date</p>
-                  <p className="text-zinc-300 text-sm">{new Date(selected.created_at).toLocaleDateString("en-GB")}</p>
+                  <p className="text-zinc-300 text-sm">
+                    {selected.created_at ? new Date(selected.created_at).toLocaleDateString("en-GB") : "-"}
+                  </p>
                 </div>
                 <div>
                   <p className="text-[10px] tracking-[3px] uppercase text-zinc-500 mb-1">Updates Opt-in</p>
@@ -190,22 +208,14 @@ export default function ContactsSection() {
               </div>
               <div>
                 <p className="text-[10px] tracking-[3px] uppercase text-zinc-500 mb-2">Message</p>
-                <p className="text-zinc-300 text-sm leading-relaxed bg-zinc-800/50 px-4 py-3 rounded-sm">
+                <p className="text-zinc-300 text-sm leading-relaxed bg-zinc-800/50 px-4 py-3 rounded-sm whitespace-pre-wrap max-h-40 overflow-y-auto">
                   {selected.message}
                 </p>
               </div>
             </div>
-            <div className="px-6 py-4 border-t border-zinc-800 flex gap-3 justify-end">
-              {selected.status === "unread" && (
-                <button
-                  onClick={() => handleMarkRead(selected.id)}
-                  className="px-4 py-2 text-xs font-bold tracking-[2px] uppercase text-emerald-400 hover:text-emerald-300 transition"
-                >
-                  Mark as Read
-                </button>
-              )}
+            <div className="px-6 py-4 border-t border-zinc-800 flex gap-3 justify-end bg-zinc-900/50">
               <button
-                onClick={() => { setDeleteId(selected.id); setSelected(null); }}
+                onClick={() => setDeleteId(selected.id)}
                 className="px-4 py-2 text-xs font-bold tracking-[2px] uppercase text-red-400 hover:text-red-300 transition"
               >
                 Delete
@@ -221,11 +231,11 @@ export default function ContactsSection() {
         </div>
       )}
 
-      {/* Delete Confirm */}
+      {/* Delete Confirm Modal */}
       {deleteId && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center px-4">
-          <div className="absolute inset-0 bg-black/70" onClick={() => setDeleteId(null)} />
-          <div className="relative bg-zinc-900 border border-zinc-800 rounded-sm w-full max-w-sm p-6">
+        <div className="fixed inset-0 z-60 flex items-center justify-center px-4">
+          <div className="absolute inset-0 bg-black/80" onClick={() => setDeleteId(null)} />
+          <div className="relative bg-zinc-900 border border-zinc-800 rounded-sm w-full max-w-sm p-6 shadow-2xl">
             <h3 className="text-white text-xs font-bold tracking-[3px] uppercase mb-2">Delete Contact</h3>
             <p className="text-zinc-400 text-xs mb-6">Are you sure? This action cannot be undone.</p>
             <div className="flex gap-3 justify-end">

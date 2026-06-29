@@ -87,7 +87,6 @@ const brandsData = [
   },
 ];
 
-// Brand ID → exact name used in Navbar & ProductsClient brands array
 const brandIdToName = {
   "brax": "Brax",
   "blam": "Blam",
@@ -112,8 +111,7 @@ const BrandsSinglePage = () => {
       const element = document.getElementById(id);
       if (element) {
         const yOffset = -80;
-        const y =
-          element.getBoundingClientRect().top + window.pageYOffset + yOffset;
+        const y = element.getBoundingClientRect().top + window.pageYOffset + yOffset;
         window.scrollTo({ top: y, behavior: "smooth" });
       }
     } else {
@@ -132,42 +130,42 @@ const BrandsSinglePage = () => {
           <section
             key={brand.id}
             id={brand.id}
-            className="min-h-[60vh] lg:min-h-[70vh] flex flex-col md:flex-row items-stretch border-b border-zinc-100 overflow-hidden"
+            className="w-full flex flex-col md:flex-row items-stretch border-b border-zinc-100 overflow-hidden"
           >
             {/* IMAGE COLUMN */}
             <div
-              className={`w-full md:w-1/2 h-[32vh] sm:h-[40vh] md:h-auto flex items-center justify-center  sm:p-8 md:p-12 bg-zinc-50/50 relative group ${
+              className={`w-full md:w-1/2 min-h-[300px] sm:min-h-[380px] md:min-h-0 py-8 px-4 sm:p-8 md:p-12 lg:p-16 flex items-center justify-center bg-zinc-50/50 relative group select-none ${
                 isOdd
-                  ? "md:order-last border-l border-zinc-100/50"
-                  : "border-r border-zinc-100/50"
+                  ? "md:order-last border-b md:border-b-0 md:border-l border-zinc-100/70"
+                  : "border-b md:border-b-0 md:border-r border-zinc-100/70"
               }`}
             >
               <img
                 src={brand.image}
                 alt={`${brand.name} Product Hardware`}
                 loading={index < 2 ? "eager" : "lazy"}
-                className="w-full h-full max-h-[260px] sm:max-h-[320px] md:max-h-[380px] object-contain transition-transform duration-[2s] ease-out will-change-transform lg:group-hover:scale-103"
+                className="w-full h-full max-w-[240px] sm:max-w-[280px] md:max-w-[340px] lg:max-w-[400px] aspect-[4/3] object-contain transition-transform duration-[1.5s] ease-out will-change-transform lg:group-hover:scale-105"
               />
             </div>
 
             {/* EDITORIAL CONTENT COLUMN */}
             <div
-              className={`w-full md:w-1/2 px-6 py-12 sm:p-14 md:p-16 lg:p-20 flex flex-col justify-center transition-colors duration-300 ${
-                isOdd ? "bg-zinc-50/20" : "bg-white"
+              className={`w-full md:w-1/2 px-5 py-10 sm:p-12 md:p-14 lg:p-16 xl:p-20 flex flex-col justify-center ${
+                isOdd ? "bg-zinc-50/15" : "bg-white"
               }`}
             >
               {/* Partner Label */}
-              <span className="text-[10px] tracking-[0.25em] text-zinc-400 mb-2.5 font-bold uppercase block">
+              <span className="text-[9px] sm:text-[10px] tracking-[0.25em] text-zinc-400 mb-2.5 font-bold uppercase block">
                 Authorized Premium Partner
               </span>
 
               {/* Brand Title */}
-              <h2 className="text-2xl sm:text-3xl lg:text-4xl font-light tracking-tight text-zinc-950 mb-1.5 uppercase">
+              <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-light tracking-tight text-zinc-950 mb-2 uppercase">
                 {brand.name}
               </h2>
 
               {/* Tagline */}
-              <p className="text-[10px] sm:text-[11px] tracking-[0.15em] text-zinc-500 mb-5 font-semibold uppercase max-w-md">
+              <p className="text-[9px] sm:text-[10px] lg:text-[11px] tracking-[0.15em] text-zinc-500 mb-5 font-semibold uppercase max-w-md leading-relaxed">
                 {brand.tagline}
               </p>
 
@@ -175,15 +173,15 @@ const BrandsSinglePage = () => {
               <div className="w-8 h-[1px] bg-zinc-950 mb-5"></div>
 
               {/* Description */}
-              <p className="text-zinc-600 text-xs sm:text-sm leading-6 sm:leading-7 font-light tracking-wide max-w-prose text-left mb-6">
+              <p className="text-zinc-600 text-xs sm:text-sm leading-6 sm:leading-7 lg:leading-8 font-light tracking-wide max-w-prose text-left mb-6 sm:mb-8">
                 {brand.description}
               </p>
 
-              {/* CTA — Next.js Link */}
+              {/* CTA Button */}
               <div className="pt-1">
                 <Link
                   href={catalogHref}
-                  className="inline-block w-full sm:w-auto px-7 py-3 border border-zinc-950 text-zinc-950 bg-transparent hover:bg-zinc-950 hover:text-white transition-all duration-500 ease-in-out text-[10px] tracking-[0.2em] font-semibold uppercase rounded-none shadow-sm active:scale-[0.99] text-center"
+                  className="inline-block w-full sm:w-auto px-6 sm:px-8 py-3 sm:py-3.5 border border-zinc-950 text-zinc-950 bg-transparent hover:bg-zinc-950 hover:text-white transition-all duration-300 ease-in-out text-[9px] sm:text-[10px] tracking-[0.2em] font-semibold uppercase rounded-none shadow-sm active:scale-[0.98] text-center"
                 >
                   View {brand.name} Catalog
                 </Link>
