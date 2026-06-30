@@ -8,5 +8,6 @@ const nextConfig = {
     ignoreBuildErrors: true,
   },
 };
+const nextConfig = {};
 
 export default nextConfig;
