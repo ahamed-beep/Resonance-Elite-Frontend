@@ -6,6 +6,9 @@ export const metadata = {
   title: "Resonance Elite | Premium Car & Home Audio Pakistan",
   description:
     "Resonance Elite offers premium car and home audio products and services in Pakistan — Helix, Brax, Morel, Mosconi, DD Audio and more.",
+  verification: {
+    google: "aRXEfUWYLmuSGlZXDBwSj1EMJ34TTVmETkZ868xKNQk",
+  },
 };
 
 export default function RootLayout({ children }) {
