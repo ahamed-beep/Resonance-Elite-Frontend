@@ -8,7 +8,7 @@ const brandLogos = [
   { src: "/Images/home/brand/match.svg", alt: "Match Audio" },
   { src: "/Images/home/brand/BLAM.png", alt: "BLAM Audio" },
   { src: "/Images/home/brand/DBDRIVE.png", alt: "DB Drive Audio" },
-  { src: "/Images/home/brand/HELIX.png", alt: "Helix Audio" },
+  { src: "/Images/home/brand/Helix.png", alt: "Helix Audio" },
 ];
 
 const doubledLogos = [...brandLogos, ...brandLogos, ...brandLogos];
