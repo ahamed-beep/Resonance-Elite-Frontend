@@ -1,4 +1,5 @@
-const API_URL = "https://resonance-elite.com/resonance-elite-backend/api";
+const API_URL = process.env.NEXT_PUBLIC_API_URL;
+const BACKEND_URL = process.env.NEXT_PUBLIC_BACKEND_URL;
 
 export const categoryGroups = {
   "Car Audio": ["Amplifiers", "Subwoofers", "Speakers", "DSPs", "Cables & Wiring", "Accessories"],
@@ -10,7 +11,6 @@ export const brands = [
   "Mosconi", "Match", "DD Audio", "DB Drive", "DB Link",
 ];
 
-// Helper function to map product data consistently
 const mapProductData = (p) => ({
   id: p.id,
   name: p.name,
@@ -25,16 +25,15 @@ const mapProductData = (p) => ({
   inStock: p.stock_status === "in_stock",
   warehouse: p.warehouse,
   images: p.images?.length
-    ? p.images.map((img) => img.startsWith('http') ? img : `https://resonance-elite.com/resonance-elite-backend${img}`)
+    ? p.images.map((img) => img.startsWith('http') ? img : `${BACKEND_URL}${img}`)
     : ["https://images.unsplash.com/photo-1519677100203-a0e668c92439?q=80&w=1200&auto=format&fit=crop"],
 });
 
 export async function getProducts() {
   try {
-    // FIXED: Removed the hardcoded duplicate backend path
     const res = await fetch(`${API_URL}/products`, { cache: "no-store" });
     if (!res.ok) return [];
-    
+
     const data = await res.json();
     return Array.isArray(data) ? data.map(mapProductData) : [];
   } catch (error) {
@@ -47,7 +46,7 @@ export async function getProduct(id) {
   try {
     const res = await fetch(`${API_URL}/products/${id}`, { cache: "no-store" });
     if (!res.ok) return null;
-    
+
     const p = await res.json();
     return p ? mapProductData(p) : null;
   } catch (error) {
