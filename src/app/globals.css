@@ -24,6 +24,37 @@ body {
   background-color: white;
 }
 
+.global-loader {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.75rem;
+  background: rgba(255, 255, 255, 0.82);
+  backdrop-filter: blur(6px);
+  color: #111827;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+}
+
+.global-loader__spinner {
+  width: 3rem;
+  height: 3rem;
+  border-radius: 9999px;
+  border: 4px solid #e5e7eb;
+  border-top-color: #dc2626;
+  animation: global-loader-spin 0.9s linear infinite;
+}
+
+@keyframes global-loader-spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
 button,
 a,
 [role="button"],
