@@ -1,17 +1,15 @@
 import axios from "axios";
 
 const api = axios.create({
-  baseURL: "https://resonance-elite.com/resonance-elite-backend/api",
+  baseURL: process.env.NEXT_PUBLIC_API_URL,
   headers: {
     "Content-Type": "application/json",
     "Accept": "application/json",
   },
 });
 
-// Request interceptor for dynamic token injection
 api.interceptors.request.use(
   (config) => {
-    // FIX: Check if code is running in the browser before accessing localStorage
     if (typeof window !== "undefined") {
       const token = localStorage.getItem("admin_token");
       if (token) {
