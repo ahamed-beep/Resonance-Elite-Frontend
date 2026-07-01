@@ -1,6 +1,6 @@
 // app/layout.jsx
 
-
+import { Suspense } from "react";
 import GlobalLoader from "@/Components/GlobalLoader";
 import "./globals.css";
 
@@ -17,7 +17,9 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <body suppressHydrationWarning>
-        <GlobalLoader />
+        <Suspense fallback={null}>
+          <GlobalLoader />
+        </Suspense>
         {children}
       </body>
     </html>
