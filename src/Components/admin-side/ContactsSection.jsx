@@ -26,7 +26,6 @@ export default function ContactsSection() {
     }
   };
 
-  // Jab message open ho ya click ho tab trigger hoga
   const handleMarkRead = async (id) => {
     try {
       await api.patch(`/contacts/${id}/read`);
