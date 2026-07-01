@@ -65,11 +65,9 @@ export default function ProductDetailClient({ product, relatedProducts }) {
         </ol>
       </nav>
 
-      {/* Main Content */}
       <main className="max-w-7xl min-[1920px]:max-w-[1600px] min-[2560px]:max-w-[2100px] mx-auto px-4 sm:px-6 lg:px-8 min-[1920px]:px-12 pb-16 md:pb-20 min-[1920px]:pb-28">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 md:gap-10 lg:gap-16 min-[1920px]:gap-24 items-start">
           
-          {/* Image Container - Fully Responsive Aspect */}
           <div className="w-full lg:sticky lg:top-8">
             <div className="aspect-[4/3] w-full overflow-hidden border border-zinc-200 bg-zinc-50 rounded-sm group cursor-zoom-in relative">
               <Image
