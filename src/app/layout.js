@@ -1,6 +1,7 @@
 // app/layout.jsx
 
-import GlobalLoader from "../Components/GlobalLoader";
+
+import GlobalLoader from "@/Components/GlobalLoader";
 import "./globals.css";
 
 export const metadata = {
